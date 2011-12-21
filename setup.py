@@ -75,6 +75,18 @@ class Common(object):
         if not os.path.exists( self.bundlePath ):
             print "%s does not exist. Creating" % self.bundlePath
 
+    def InstallQuicksilver( self ):
+        destPath = os.path.join( self.bundlePath, 'quicksilver' )
+        if os.path.exists( destPath ):
+        	print "Quicksilver installed.  Skipping"
+        	return
+        print "Installing Quicksilver from github"
+        subprocess.check_call( [ 
+            'git', 
+            'clone', 
+            'https://github.com/Bogdanp/quicksilver.vim.git',
+            destPath
+            ] )
 
     def InstallVimPlugin( self, vimOrgId ):
         """ Installs a vim plug using pathogen """
@@ -83,9 +95,10 @@ class Common(object):
     def InstallVimPlugins(self):
         """ Installs vim plugins.  Pathogen first, followed by others """
         self.InstallPathogen()
+        self.InstallQuicksilver()
         for vimOrgId in self.vimPlugins:
             self.InstallVimPlugin( vimOrgId )
-
+        
 
 class Windows(Common):
     vimDir = os.path.expanduser( "~/.vimfiles/" )
