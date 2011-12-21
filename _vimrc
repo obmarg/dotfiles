@@ -56,3 +56,5 @@ set title
 
 " Disable this if it causes issues...
 set autochdir
+
+call pathogen#infect() 
