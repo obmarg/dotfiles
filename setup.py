@@ -4,6 +4,8 @@ import os, sys
 import subprocess
 import shutil
 import urllib
+import zipfile
+import re
 
 def LinkFile( orig, target, prompt=True, force=False, mkdirs=True ):
     actualTarget = os.path.expanduser( target )
@@ -40,12 +42,31 @@ def LinkFile( orig, target, prompt=True, force=False, mkdirs=True ):
     print "Linking %s to %s" % ( orig, actualTarget )
     os.symlink( os.path.abspath( orig ), actualTarget )
 
+def Unzip( filename, destPath ):
+    if not os.path.exists( filename ):
+        print "Unzip Error: File %s does not exist" % filename
+    z = zipfile.ZipFile( filename )
+    print "Extracting %s to %s" % ( filename, destPath )
+    z.extractall( destPath )
+    z.close()
+    print "Done.  Deleting %s" % filename
+    os.unlink( filename )
+
+mimeHandlers = {
+        'application/zip' : Unzip
+        }
+extHandlers = {
+        '.zip' : Unzip
+        }
+
 class Common(object):
     linkOptions = {}
     dotfiles = {}
     vimDir = os.path.expanduser( "~/.vim/" )
     bundlePath = os.path.join( vimDir, 'bundle' )
-    vimPlugins = {}
+    vimPlugins = {
+            'snipmate' : 11006
+            }
 
     vimDownloadUrl = "http://www.vim.org/scripts/download_script.php?src_id="
     pathogenVimOrgId = 16224
@@ -78,7 +99,7 @@ class Common(object):
     def InstallQuicksilver( self ):
         destPath = os.path.join( self.bundlePath, 'quicksilver' )
         if os.path.exists( destPath ):
-        	print "Quicksilver installed.  Skipping"
+        	print "Quicksilver already installed.  Skipping"
         	return
         print "Installing Quicksilver from github"
         subprocess.check_call( [ 
@@ -88,16 +109,36 @@ class Common(object):
             destPath
             ] )
 
-    def InstallVimPlugin( self, vimOrgId ):
+    def InstallVimPlugin( self, name, vimOrgId ):
         """ Installs a vim plug using pathogen """
-        pass
+        destPath = os.path.join( self.bundlePath, name )
+        if os.path.exists( destPath ):
+        	print "%s already installed.  Skipping" % name
+        url = self.vimDownloadUrl + str( vimOrgId )
+        print "Donwloading %s from %s" % ( name, url )
+        filename, info = urllib.urlretrieve( url )
+        origFile = info.getheader( 'content-disposition' )
+        #Strip out filename bit 
+        origFile = re.sub( '.*filename=', '', origFile )
+        origExt = origFile[origFile.rfind( '.' ):]
+        print "Saved to %s" % filename
+        print "Mimetype: %s" % info.gettype()
+        
+        if info.gettype() in mimeHandlers:
+        	# Call handler for this filetype
+        	mimeHandlers[ info ]( filename, destPath )
+        elif origExt in extHandlers:
+        	extHandlers[ origExt ]( filename, destPath )
+        else:
+            # Just copy to destination
+            shutil.move( filename, os.path.join( destPath, origFile ) ) 
 
     def InstallVimPlugins(self):
         """ Installs vim plugins.  Pathogen first, followed by others """
         self.InstallPathogen()
         self.InstallQuicksilver()
-        for vimOrgId in self.vimPlugins:
-            self.InstallVimPlugin( vimOrgId )
+        for name, vimOrgId in self.vimPlugins.iteritems():
+            self.InstallVimPlugin( name, vimOrgId )
         
 
 class Windows(Common):
