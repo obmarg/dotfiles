@@ -56,6 +56,8 @@ autocmd BufReadPre SConscript set filetype=python
 autocmd BufNewFile,BufRead *.py set softtabstop=4
 autocmd BufNewFile,BufRead *.py set shiftwidth=4
 autocmd BufNewFile,BufRead *.py set smarttab
+" Smart indent fucks up lines starting with #
+autocmd filetype python setlocal nosmartindent
 
 set laststatus=2
 set statusline="%f%y%=#%n %l/%L%,%c%V"
