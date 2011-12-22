@@ -38,7 +38,9 @@ syntax on
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 match OverLength /\%81v.\+/
 
-set guifont=Lucida_Console:h11:cANSI
+if hostname() == 'CEEPHAX'
+    set guifont=Lucida_Console:h11:cANSI
+endif
 
 if &t_Co >= 256 || has("gui_running")
     colorscheme ir_black
