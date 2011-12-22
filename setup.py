@@ -155,7 +155,6 @@ class Linux(Common):
     dotfiles = {
             '_vimrc' : os.path.join( '~', '.vimrc' ),
             '_bashrc' : os.path.join( '~', '.bashrc' ),
-            'agent.sh' : os.path.join( '~', '.ssh', 'agent.sh' )
             }
 
 if __name__ == "__main__":
