@@ -130,20 +130,15 @@ class Common(object):
             cwd = os.getcwd()
             os.chdir( destPath )
             try:
-                subprocess.check_call( [
-                    'git',
-                    'pull'
-                    ] )
+                subprocess.check_call( 'git pull', shell=True )
             finally:
                 os.chdir( cwd )
         else:
             print "Installing Quicksilver from remote repo"
-            subprocess.check_call( [
-                'git',
-                'clone',
-                url,
-                destPath
-                ] )
+            subprocess.check_call( 
+                    'git clone "%s" "%s"' % ( url, destPath ),
+                    shell=True
+                    )
 
     def InstallVimPluginFromWeb( self, name, vimOrgId ):
         """ Installs a vim plug using pathogen """
