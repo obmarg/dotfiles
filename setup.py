@@ -115,7 +115,7 @@ class Common(object):
         subprocess.check_call( [ 
             'git', 
             'clone', 
-            'git://github.com/Bogdanp/quicksilver.vim.git',
+            'git://github.com/obmarg/quicksilver.vim.git',
             destPath
             ] )
 
