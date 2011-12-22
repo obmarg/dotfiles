@@ -23,7 +23,7 @@ def LinkFile( orig, target, prompt=True, force=False, mkdirs=True ):
 					quit()
                 elif action in [ 'd', 'diff' ]:
                     subprocess.call(
-                            [ 'diff', actualTarget, orig ],
+                            [ 'diff', '-u', actualTarget, orig ],
                             stdout = sys.stdout,
                             stderr = sys.stderr,
                             shell = True
@@ -62,14 +62,16 @@ extHandlers = {
 class Common(object):
     linkOptions = {}
     dotfiles = {}
-    vimDir = os.path.expanduser( "~/.vim/" )
-    bundlePath = os.path.join( vimDir, 'bundle' )
+    vimDir = os.path.expanduser( os.path.join( '~', '.vim' ) )
     vimPlugins = {
             'snipmate' : 11006
             }
 
     vimDownloadUrl = "http://www.vim.org/scripts/download_script.php?src_id="
     pathogenVimOrgId = 16224
+
+    def __init__( self ):
+        self.bundlePath = os.path.join( self.vimDir, 'bundle', '' )
 
     def Install(self):
         """ Installs everything """
@@ -95,6 +97,7 @@ class Common(object):
         urllib.urlretrieve( url, pathogenFile )
         if not os.path.exists( self.bundlePath ):
             print "%s does not exist. Creating" % self.bundlePath
+            os.makedirs( self.bundlePath )
 
     def InstallQuicksilver( self ):
         destPath = os.path.join( self.bundlePath, 'quicksilver' )
@@ -107,7 +110,7 @@ class Common(object):
             'clone', 
             'https://github.com/Bogdanp/quicksilver.vim.git',
             destPath
-            ] )
+            ], shell=True )
 
     def InstallVimPlugin( self, name, vimOrgId ):
         """ Installs a vim plug using pathogen """
@@ -142,14 +145,14 @@ class Common(object):
         
 
 class Windows(Common):
-    vimDir = os.path.expanduser( "~/.vimfiles/" )
+    vimDir = os.path.expanduser( os.path.join( '~', 'vimfiles' ) )
     dotfiles = {
-            '_vimrc' : '~/_vimrc'
+            '_vimrc' : os.path.join( '~', '_vimrc' )
             }
 
 class Linux(Common):
     dotfiles = {
-            '_vimrc' : '~/.vimrc'
+            '_vimrc' : os.path.join( '~', '.vimrc' )
             }
 
 if __name__ == "__main__":
