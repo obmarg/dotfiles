@@ -42,6 +42,8 @@ set guifont=Lucida_Console:h11:cANSI
 
 if &t_Co >= 256 || has("gui_running")
     colorscheme ir_black
+else
+	set bg=dark
 endif
 
 set backup

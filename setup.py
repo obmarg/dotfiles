@@ -22,11 +22,11 @@ def LinkFile( orig, target, prompt=True, force=False, mkdirs=True ):
                 elif action in [ 'q', 'quit' ]:
 					quit()
                 elif action in [ 'd', 'diff' ]:
+                    origFullPath = os.path.abspath( orig )
                     subprocess.call(
-                            [ 'diff', '-u', actualTarget, orig ],
+                            [ 'diff', '-u', actualTarget, origFullPath ],
                             stdout = sys.stdout,
-                            stderr = sys.stderr,
-                            shell = True
+                            stderr = sys.stderr
                             )
         elif not force:
             return
@@ -110,7 +110,7 @@ class Common(object):
             'clone', 
             'https://github.com/Bogdanp/quicksilver.vim.git',
             destPath
-            ], shell=True )
+            ] )
 
     def InstallVimPlugin( self, name, vimOrgId ):
         """ Installs a vim plug using pathogen """
