@@ -48,10 +48,9 @@ else
 	set bg=dark
 endif
 
-set backup
-set backupdir=~/.vim/backup
+set nobackup
 set clipboard+=unnamed
-set directory=~/.vim/tmp
+set directory=$HOME/.vim/tmp
 
 autocmd BufReadPre SConstruct set filetype=python
 autocmd BufReadPre SConscript set filetype=python
