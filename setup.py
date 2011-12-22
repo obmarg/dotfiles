@@ -45,10 +45,17 @@ def LinkFile( orig, target, prompt=True, force=False, mkdirs=True ):
 def Unzip( filename, destPath ):
     if not os.path.exists( filename ):
         print "Unzip Error: File %s does not exist" % filename
-    z = zipfile.ZipFile( filename )
-    print "Extracting %s to %s" % ( filename, destPath )
-    z.extractall( destPath )
-    z.close()
+    try:
+        z = zipfile.ZipFile( filename )
+        print "Extracting %s to %s" % ( filename, destPath )
+        z.extractall( destPath )
+        z.close()
+    except:
+        # Fall back on running unzip
+        print "Attempting unzip via external tool"
+        subprocess.check_call(
+                [ 'unzip', filename, '-d', destPath ]
+                )
     print "Done.  Deleting %s" % filename
     os.unlink( filename )
 
