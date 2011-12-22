@@ -20,7 +20,7 @@ def LinkFile( orig, target, prompt=True, force=False, mkdirs=True ):
                 elif action in [ 's', 'skip' ]:
                     return
                 elif action in [ 'q', 'quit' ]:
-					quit()
+                    quit()
                 elif action in [ 'd', 'diff' ]:
                     origFullPath = os.path.abspath( orig )
                     subprocess.call(
@@ -41,13 +41,13 @@ def LinkFile( orig, target, prompt=True, force=False, mkdirs=True ):
             return
     print "Linking %s to %s" % ( orig, actualTarget )
     if 'symlink' in dir( os ):
-	    os.symlink( os.path.abspath( orig ), actualTarget )
+        os.symlink( os.path.abspath( orig ), actualTarget )
     else:
-	    # Probably just python < 3.2 on windows.
-	    # Fall back on mklink
-	    subprocess.check_call( [ 
-		    'mklink', actualTarget, os.path.abspath( orig )
-		    ], shell=True )
+        # Probably just python < 3.2 on windows.
+        # Fall back on mklink
+        subprocess.check_call( [ 
+            'mklink', actualTarget, os.path.abspath( orig )
+            ], shell=True )
 
 def Unzip( filename, destPath ):
     if not os.path.exists( filename ):
@@ -77,8 +77,14 @@ class Common(object):
     linkOptions = {}
     dotfiles = {}
     vimDir = os.path.expanduser( os.path.join( '~', '.vim' ) )
-    vimPlugins = {
+
+    # Vim Plugins from vim.org
+    vimOrgPlugins = {
             'snipmate' : 11006
+            }
+    # Vim plugins from git repos
+    vimGitPlugins = {
+            'quicksilver' : 'git://github.com/obmarg/quicksilver.vim.git'
             }
 
     vimDownloadUrl = "http://www.vim.org/scripts/download_script.php?src_id="
@@ -113,25 +119,34 @@ class Common(object):
             print "%s does not exist. Creating" % self.bundlePath
             os.makedirs( self.bundlePath )
 
-    def InstallQuicksilver( self ):
-        destPath = os.path.join( self.bundlePath, 'quicksilver' )
+    def InstallVimPluginFromGit( self, name, url ):
+        destPath = os.path.join( self.bundlePath, name )
         if os.path.exists( destPath ):
-        	print "Quicksilver already installed.  Skipping"
-        	return
-        print "Installing Quicksilver from github"
-        subprocess.check_call( [ 
-            'git', 
-            'clone', 
-            'git://github.com/obmarg/quicksilver.vim.git',
-            destPath
-            ] )
+            print "%s already installed.  Pulling from origin" % name
+            cwd = os.getcwd()
+            os.chdir( destPath )
+            try:
+                subprocess.check_call( [
+                    'git',
+                    'pull'
+                    ] )
+            finally:
+                os.chdir( cwd )
+        else:
+            print "Installing Quicksilver from remote repo"
+            subprocess.check_call( [
+                'git',
+                'clone',
+                url,
+                destPath
+                ] )
 
-    def InstallVimPlugin( self, name, vimOrgId ):
+    def InstallVimPluginFromWeb( self, name, vimOrgId ):
         """ Installs a vim plug using pathogen """
         destPath = os.path.join( self.bundlePath, name )
         if os.path.exists( destPath ):
-        	print "%s already installed.  Skipping" % name
-        	return
+            print "%s already installed.  Skipping" % name
+            return
         url = self.vimDownloadUrl + str( vimOrgId )
         print "Donwloading %s from %s" % ( name, url )
         filename, info = urllib.urlretrieve( url )
@@ -143,10 +158,10 @@ class Common(object):
         print "Mimetype: %s" % info.gettype()
         
         if info.gettype() in mimeHandlers:
-        	# Call handler for this filetype
-        	mimeHandlers[ info ]( filename, destPath )
+            # Call handler for this filetype
+            mimeHandlers[ info ]( filename, destPath )
         elif origExt in extHandlers:
-        	extHandlers[ origExt ]( filename, destPath )
+            extHandlers[ origExt ]( filename, destPath )
         else:
             # Just copy to destination
             shutil.move( filename, os.path.join( destPath, origFile ) ) 
@@ -154,9 +169,10 @@ class Common(object):
     def InstallVimPlugins(self):
         """ Installs vim plugins.  Pathogen first, followed by others """
         self.InstallPathogen()
-        self.InstallQuicksilver()
-        for name, vimOrgId in self.vimPlugins.iteritems():
-            self.InstallVimPlugin( name, vimOrgId )
+        for name, url in self.vimGitPlugins.iteritems():
+            self.InstallVimPluginFromGit( name, url )
+        for name, vimOrgId in self.vimOrgPlugins.iteritems():
+            self.InstallVimPluginFromWeb( name, vimOrgId )
         
 
 class Windows(Common):
