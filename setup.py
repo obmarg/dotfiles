@@ -80,11 +80,11 @@ class Common(object):
 
     # Vim Plugins from vim.org
     vimOrgPlugins = {
-            'snipmate' : 11006
             }
     # Vim plugins from git repos
     vimGitPlugins = {
-            'quicksilver' : 'git://github.com/obmarg/quicksilver.vim.git'
+            'quicksilver' : 'git://github.com/obmarg/quicksilver.vim.git',
+            'snipmate' : 'git://github.com/msanders/snipmate.vim.git'
             }
 
     vimDownloadUrl = "http://www.vim.org/scripts/download_script.php?src_id="
