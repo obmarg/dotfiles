@@ -10,6 +10,10 @@ import re
 def LinkFile( orig, target, prompt=True, force=False, mkdirs=True ):
     actualTarget = os.path.expanduser( target )
     if os.path.exists( actualTarget ):
+        if os.path.islink( actualTarget ):
+            if( os.path.samefile( actualTarget, orig ) ):
+            	print "%s is already symlinked in place." % orig
+            	return
         if prompt:
             print "%s already exists" % target
             while True:
