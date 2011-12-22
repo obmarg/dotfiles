@@ -117,6 +117,7 @@ class Common(object):
         destPath = os.path.join( self.bundlePath, name )
         if os.path.exists( destPath ):
         	print "%s already installed.  Skipping" % name
+        	return
         url = self.vimDownloadUrl + str( vimOrgId )
         print "Donwloading %s from %s" % ( name, url )
         filename, info = urllib.urlretrieve( url )
@@ -152,7 +153,9 @@ class Windows(Common):
 
 class Linux(Common):
     dotfiles = {
-            '_vimrc' : os.path.join( '~', '.vimrc' )
+            '_vimrc' : os.path.join( '~', '.vimrc' ),
+            '_bashrc' : os.path.join( '~', '.bashrc' ),
+            'agent.sh' : os.path.join( '~', '.ssh', 'agent.sh' )
             }
 
 if __name__ == "__main__":
