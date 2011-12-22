@@ -40,7 +40,14 @@ def LinkFile( orig, target, prompt=True, force=False, mkdirs=True ):
             print "Error: %s does not exist" % parentDir
             return
     print "Linking %s to %s" % ( orig, actualTarget )
-    os.symlink( os.path.abspath( orig ), actualTarget )
+    if 'symlink' in dir( os ):
+	    os.symlink( os.path.abspath( orig ), actualTarget )
+    else:
+	    # Probably just python < 3.2 on windows.
+	    # Fall back on mklink
+	    subprocess.check_call( [ 
+		    'mklink', actualTarget, os.path.abspath( orig )
+		    ], shell=True )
 
 def Unzip( filename, destPath ):
     if not os.path.exists( filename ):
