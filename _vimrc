@@ -107,3 +107,5 @@ nmap <silent> ,/ :nohlsearch<CR>
 
 " w!! will sudo write a file
 cmap w!! w !sudo tee % >/dev/null
+
+nmap <leader>e :TlistToggle<CR>

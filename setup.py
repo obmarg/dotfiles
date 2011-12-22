@@ -84,11 +84,13 @@ class Common(object):
 
     # Vim Plugins from vim.org
     vimOrgPlugins = {
+            'taglist' : 7701,
             }
     # Vim plugins from git repos
     vimGitPlugins = {
             'quicksilver' : 'git://github.com/obmarg/quicksilver.vim.git',
-            'snipmate' : 'git://github.com/msanders/snipmate.vim.git'
+            'snipmate' : 'git://github.com/msanders/snipmate.vim.git',
+            'minibufexpl' : 'git://github.com/fholgado/minibufexpl.vim.git',
             }
 
     vimDownloadUrl = "http://www.vim.org/scripts/download_script.php?src_id="
@@ -155,7 +157,7 @@ class Common(object):
         origExt = origFile[origFile.rfind( '.' ):]
         print "Saved to %s" % filename
         print "Mimetype: %s" % info.gettype()
-        
+        os.makedirs( destPath )
         if info.gettype() in mimeHandlers:
             # Call handler for this filetype
             mimeHandlers[ info ]( filename, destPath )
