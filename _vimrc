@@ -112,4 +112,8 @@ nmap <silent> ,/ :nohlsearch<CR>
 " w!! will sudo write a file
 cmap w!! w !sudo tee % >/dev/null
 
+" Map tag list to <leader>e
 nmap <leader>e :TlistToggle<CR>
+
+" Setup filter list for quicksilver
+let g:QSFilter="*.pyc"
