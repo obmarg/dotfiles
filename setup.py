@@ -92,6 +92,7 @@ class Common(object):
             'snipmate' : 'git://github.com/msanders/snipmate.vim.git',
             'minibufexpl' : 'git://github.com/fholgado/minibufexpl.vim.git',
             'pyrepl' : 'git://github.com/Bogdanp/pyrepl.vim.git',
+            'git.vim' : 'git://github.com/pydave/git-vim.git'
             }
 
     vimDownloadUrl = "http://www.vim.org/scripts/download_script.php?src_id="
