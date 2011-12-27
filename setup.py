@@ -137,7 +137,7 @@ class Common(object):
             finally:
                 os.chdir( cwd )
         else:
-            print "Installing Quicksilver from remote repo"
+            print "Installing %s from remote repo" % name
             subprocess.check_call( 
                     'git clone "%s" "%s"' % ( url, destPath ),
                     shell=True
