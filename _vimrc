@@ -102,6 +102,22 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Map some buffer navigation keys.
+" F1 for list
+" <leader>\ for toggle
+" <leader>1... for buffer number
+map <F1> :ls<CR>
+map <leader>\ :b #<CR>
+map <leader>1 :b 1<CR>
+map <leader>2 :b 2<CR>
+map <leader>3 :b 3<CR>
+map <leader>4 :b 4<CR>
+map <leader>5 :b 5<CR>
+map <leader>6 :b 6<CR>
+map <leader>7 :b 7<CR>
+map <leader>8 :b 8<CR>
+map <leader>9 :b 9<CR>
+
 " Shortcut to use ; instead of : commands
 map ; :
 
