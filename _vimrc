@@ -87,10 +87,6 @@ set pastetoggle=<F2>
 " Uncomment this for mouse support 
 " set mouse=a
 
-" This next one sounds good, but unsure of.  Removes need for shift
-" when running commands.  Going to fuck with my muscle memory though...
-" nnoremap ; :
-
 " I might kill myself for this, but disable arrow keys:
 map <up> <nop>
 map <down> <nop>
