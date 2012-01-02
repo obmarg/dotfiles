@@ -52,7 +52,6 @@ set directory=$HOME/.vim/tmp
 " Set up tag locations
 set tags=./tags;/.;
 autocmd filetype cpp setlocal tags+=/usr/include/boost/tags
-autocmd filetype python setlocal tags+=$HOME/.pythontags
 
 autocmd BufReadPre SConstruct set filetype=python
 autocmd BufReadPre SConscript set filetype=python
