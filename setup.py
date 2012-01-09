@@ -104,6 +104,7 @@ class Common(object):
         """ Installs everything """
         self.CopyDotFiles()
         self.InstallVimPlugins()
+        self.InstallVimColors()
 
     def CopyDotFiles(self):
         """ Copys dot files to appropriate locations """
@@ -175,6 +176,18 @@ class Common(object):
             self.InstallVimPluginFromGit( name, url )
         for name, vimOrgId in self.vimOrgPlugins.iteritems():
             self.InstallVimPluginFromWeb( name, vimOrgId )
+
+    def InstallVimColors( self ):
+        """ Installs vim color files """
+        colorPath = os.path.join( self.vimDir, 'colors' )
+        if not os.path.exists( colorPath ):
+            os.makedirs( colorPath )
+        destPath = os.path.join( colorPath, 'ir_black.vim' )
+        if not os.path.exists( destPath ):
+            print "Copying ir_black color scheme into place"
+            shutil.copy( 'ir_black.vim', destPath )
+        else:
+            print "ir_black is already in place. Skipping"
         
 
 class Windows(Common):

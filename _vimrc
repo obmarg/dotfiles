@@ -35,7 +35,7 @@ syntax on
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 match OverLength /\%81v.\+/
 
-if hostname() == 'CEEPHAX'
+if hostname() == 'CEEPHAX' && has('gui_win32')
     set guifont=Lucida_Console:h11:cANSI
 endif
 
