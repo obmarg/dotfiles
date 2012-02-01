@@ -91,7 +91,8 @@ class Common(object):
             'quicksilver' : 'git://github.com/obmarg/quicksilver.vim.git',
             'snipmate' : 'git://github.com/msanders/snipmate.vim.git',
             'pyrepl' : 'git://github.com/Bogdanp/pyrepl.vim.git',
-            'git.vim' : 'git://github.com/pydave/git-vim.git'
+            'git.vim' : 'git://github.com/pydave/git-vim.git',
+            'mustache.vim' : 'git://github.com/juvenn/mustache.vim.git',
             }
 
     vimDownloadUrl = "http://www.vim.org/scripts/download_script.php?src_id="
