@@ -93,6 +93,8 @@ class Common(object):
             'pyrepl' : 'git://github.com/Bogdanp/pyrepl.vim.git',
             'git.vim' : 'git://github.com/pydave/git-vim.git',
             'mustache.vim' : 'git://github.com/juvenn/mustache.vim.git',
+            'vim-coffee-script' : 'git://github.com/kchmck/vim-coffee-script.git',
+            'scss-syntax' : 'git://github.com/cakebaker/scss-syntax.vim.git'
             }
 
     vimDownloadUrl = "http://www.vim.org/scripts/download_script.php?src_id="

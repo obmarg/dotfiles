@@ -36,7 +36,7 @@ highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 match OverLength /\%81v.\+/
 
 if hostname() == 'CEEPHAX' && has('gui_win32')
-    set guifont=Lucida_Console:h11:cANSI
+    set guifont=Ubuntu_Mono:h13:cANSI
 endif
 
 if &t_Co >= 256 || has("gui_running")
@@ -60,6 +60,9 @@ autocmd BufNewFile,BufRead *.py set shiftwidth=4
 autocmd BufNewFile,BufRead *.py set smarttab
 " Smart indent fucks up lines starting with #
 autocmd filetype python setlocal nosmartindent
+
+" Coffee script 2 space indents
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 set laststatus=2
 set statusline="%f%y%=#%n %l/%L%,%c%V"
