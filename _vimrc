@@ -135,3 +135,26 @@ nmap <leader>e :TlistToggle<CR>
 
 " Setup filter list for quicksilver
 let g:QSFilter="*.pyc"
+
+" Setup relative linenumbers & toggle
+set relativenumber
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
+
+" When we've not got focus, switch to normal numbers
+:au FocusLost * :set number
+:au FocusGained * :set relativenumber
+
+" When in insert mode, display normal numbers
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+
+
