@@ -81,6 +81,7 @@ class Common(object):
     linkOptions = {}
     dotfiles = {}
     vimDir = os.path.expanduser( os.path.join( '~', '.vim' ) )
+    vimTmp = os.path.join( vimDir, 'tmp' )
 
     # Vim Plugins from vim.org
     vimOrgPlugins = {
@@ -108,6 +109,10 @@ class Common(object):
         self.CopyDotFiles()
         self.InstallVimPlugins()
         self.InstallVimColors()
+        # Create vim temp folder if not already there
+        if not os.path.exists( self.vimTmp ):
+            print "Creating vim temp folder at %s" % self.vimTmp
+            os.makedirs( self.vimTmp )
 
     def CopyDotFiles(self):
         """ Copys dot files to appropriate locations """
