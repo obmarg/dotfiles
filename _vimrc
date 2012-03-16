@@ -58,6 +58,7 @@ autocmd BufReadPre SConscript set filetype=python
 autocmd BufNewFile,BufRead *.py set softtabstop=4
 autocmd BufNewFile,BufRead *.py set shiftwidth=4
 autocmd BufNewFile,BufRead *.py set smarttab
+" t
 " Smart indent fucks up lines starting with #
 autocmd filetype python setlocal nosmartindent
 
@@ -137,24 +138,28 @@ nmap <leader>e :TlistToggle<CR>
 let g:QSFilter="*.pyc"
 
 " Setup relative linenumbers & toggle
-set relativenumber
+if exists("+relativenumber")
+	set relativenumber
 
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
+    function! NumberToggle()
+    if(&relativenumber == 1)
+        set number
+    else
+        set relativenumber
+    endif
+    endfunc
 
-nnoremap <C-n> :call NumberToggle()<cr>
+    nnoremap <C-n> :call NumberToggle()<cr>
 
-" When we've not got focus, switch to normal numbers
-:au FocusLost * :set number
-:au FocusGained * :set relativenumber
+    " When we've not got focus, switch to normal numbers
+    :au FocusLost * :set number
+    :au FocusGained * :set relativenumber
 
-" When in insert mode, display normal numbers
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
+    " When in insert mode, display normal numbers
+    autocmd InsertEnter * :set number
+    autocmd InsertLeave * :set relativenumber
+else
 
+set number
 
+endif
