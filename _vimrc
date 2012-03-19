@@ -65,6 +65,10 @@ autocmd filetype python setlocal nosmartindent
 " Coffee script 2 space indents
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
+" Use tabs in html & css files
+autocmd filetype html set noexpandtab
+autocmd filetype css set noexpandtab
+
 set laststatus=2
 set statusline="%f%y%=#%n %l/%L%,%c%V"
 set title
