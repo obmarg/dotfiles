@@ -66,8 +66,8 @@ autocmd filetype python setlocal nosmartindent
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 " Use tabs in html & css files
-autocmd filetype html set noexpandtab
-autocmd filetype css set noexpandtab
+autocmd filetype html setl noexpandtab ts=2 shiftwidth=2
+autocmd filetype css setl noexpandtab ts=2 shiftwidth=2
 
 set laststatus=2
 set statusline="%f%y%=#%n %l/%L%,%c%V"
