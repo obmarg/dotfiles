@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import optparse
 import os, sys
 import subprocess
 import shutil
@@ -102,12 +103,15 @@ class Common(object):
     vimDownloadUrl = "http://www.vim.org/scripts/download_script.php?src_id="
     pathogenVimOrgId = 16224
 
-    def __init__( self ):
+    def __init__( self, options ):
         self.bundlePath = os.path.join( self.vimDir, 'bundle', '' )
+        self.clean = options.clean
 
     def Install(self):
         """ Installs everything """
         self.CopyDotFiles()
+        if self.clean:
+            self.CleanVimPlugins()
         self.InstallVimPlugins()
         self.InstallVimColors()
         # Create vim temp folder if not already there
@@ -186,6 +190,27 @@ class Common(object):
         for name, vimOrgId in self.vimOrgPlugins.iteritems():
             self.InstallVimPluginFromWeb( name, vimOrgId )
 
+    def CleanVimPlugins( self ):
+        ''' Cleans any vim plugins that setup.py has not installed '''
+        print "Cleaning out old plugins"
+        numCleaned = 0
+        for entry in os.listdir( self.bundlePath ):
+            fullPath = os.path.join( self.bundlePath, entry )
+            if os.path.isdir( fullPath ):
+                shouldDelete = True
+                if entry in self.vimGitPlugins:
+                    shouldDelete = False
+                if entry in self.vimOrgPlugins:
+                    shouldDelete = False
+                if shouldDelete:
+                    print "Removing %s" % entry
+                    numCleaned += 1
+                    shutil.rmtree( fullPath )
+        if numCleaned == 0:
+            print "No plugins removed"
+        else:
+            print "%i plugins removed" % numCleaned
+
     def InstallVimColors( self ):
         """ Installs vim color files """
         colorPath = os.path.join( self.vimDir, 'colors' )
@@ -212,10 +237,18 @@ class Linux(Common):
             }
 
 if __name__ == "__main__":
+    parser = optparse.OptionParser()
+    parser.add_option( 
+            '-c', '--clean', dest='clean', 
+            help='clean out vim plugins', 
+            action='store_true', default=False
+            )
+    (options, args) = parser.parse_args()
+
     if os.name == 'posix':
-       obj = Linux()
+       obj = Linux( options  )
     elif os.name == 'nt':
-        obj = Windows()
+        obj = Windows( options )
     else:
         print "Can't determine operating system"
         quit()
