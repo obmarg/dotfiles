@@ -92,7 +92,7 @@ class Common(object):
             'quicksilver' : 'git://github.com/obmarg/quicksilver.vim.git',
             'snipmate' : 'git://github.com/msanders/snipmate.vim.git',
             'pyrepl' : 'git://github.com/Bogdanp/pyrepl.vim.git',
-            'git.vim' : 'git://github.com/pydave/git-vim.git',
+            'vim-fugitive' : 'https://github.com/tpope/vim-fugitive.git',
             'mustache.vim' : 'git://github.com/juvenn/mustache.vim.git',
             'vim-coffee-script' : 'git://github.com/kchmck/vim-coffee-script.git',
             'scss-syntax' : 'git://github.com/cakebaker/scss-syntax.vim.git',
