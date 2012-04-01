@@ -98,6 +98,7 @@ class Common(object):
             'vim-coffee-script' : 'git://github.com/kchmck/vim-coffee-script.git',
             'scss-syntax' : 'git://github.com/cakebaker/scss-syntax.vim.git',
             'less-syntax' : 'git://github.com/groenewege/vim-less',
+            'vim-smartinput' : 'git://github.com/kana/vim-smartinput.git',
             }
 
     vimDownloadUrl = "http://www.vim.org/scripts/download_script.php?src_id="
