@@ -35,8 +35,12 @@ syntax on
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 match OverLength /\%81v.\+/
 
-if hostname() == 'CEEPHAX' && has('gui_win32')
+if has('gui_win32')
     set guifont=Ubuntu_Mono:h13:cANSI
+endif
+
+if has('gui_macvim')
+    set guifont=Monaco:h13
 endif
 
 if &t_Co >= 256 || has("gui_running")
