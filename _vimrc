@@ -78,7 +78,7 @@ set statusline="%f%y%=#%n %l/%L%,%c%V"
 set title
 
 " Disable this if it causes issues...
-set autochdir
+" set autochdir
 
 " Hide buffers rather than closing.
 set hidden
