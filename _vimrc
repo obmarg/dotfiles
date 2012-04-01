@@ -145,6 +145,13 @@ map ; :
 " Clear highlighted searches
 nmap <silent> <Leader>/ :nohlsearch<CR>
 
+" Map Ctrl-S to shortcut for splitting lines on comma and )
+" I'm not yet sure how usefull this will actually be.
+" Might need a more intelligent solution.
+" For a start it's impoossible to use 4,s (as the count just acts on the
+" search)
+map <leader>s /[(,)]/e+1<leader>/i<CR><ESC>
+
 " w!! will sudo write a file
 cmap w!! w !sudo tee % >/dev/null
 
