@@ -90,6 +90,9 @@ set undolevels=2000
 " Ignore some filetypes
 set wildignore=*.swp,*.bak,*.pyc,*.class
 
+" Remap leader to comma to save cross platform confusion
+let mapleader = ","
+
 call pathogen#infect()
 
 " Hotkey for pasting without fucking up formatting
@@ -134,7 +137,7 @@ map <leader>9 :b 9<CR>
 map ; :
 
 " Clear highlighted searches
-nmap <silent> ,/ :nohlsearch<CR>
+nmap <silent> <Leader>/ :nohlsearch<CR>
 
 " w!! will sudo write a file
 cmap w!! w !sudo tee % >/dev/null
