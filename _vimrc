@@ -118,11 +118,17 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " Map some buffer navigation keys.
-" F1 for list
-" <leader>\ for toggle
+" <leader>l for list
+" <leader><leader> for toggle
+" <leader>. for next
+" <leader>m for previous
+" <leader>n as shortcut to :b
 " <leader>1... for buffer number
-map <F1> :ls<CR>
-map <leader>\ :b #<CR>
+map <leader>l :ls<CR>
+map <leader><leader> :b #<CR>
+map <leader>. :bn<CR>
+map <leader>m :bp<CR>
+map <leader>n :b
 map <leader>1 :b 1<CR>
 map <leader>2 :b 2<CR>
 map <leader>3 :b 3<CR>
