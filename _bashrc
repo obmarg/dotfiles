@@ -102,6 +102,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# Disable Ctrl+S/Ctrl-Q suspend stuff
+stty -ixon
+
 export SCONSFLAGS='-j3 -D debug=1'
 
 if [ -e ~/.ssh/agent.sh ] ; then
