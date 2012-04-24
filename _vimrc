@@ -155,6 +155,23 @@ map <leader>s /[(,)]/e+1<leader>/i<CR><ESC>
 " w!! will sudo write a file
 cmap w!! w !sudo tee % >/dev/null
 
+" Yank from cursor to end of line
+nnoremap Y y$
+
+" Indent/unident block (,]) (,[)
+nnoremap <leader>] >i{<CR>
+nnoremap <leader>[ <i{<CR>
+
+" Strip trailing whitespace (,ss)
+function! StripWhitespace ()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    :%s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfunction
+noremap <leader>ss :call StripWhitespace ()<CR>
+
 " Map tag list to <leader>e
 nmap <leader>e :TlistToggle<CR>
 
