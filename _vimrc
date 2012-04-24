@@ -30,6 +30,10 @@ set foldopen=block,hor,mark,percent,quickfix,tag
 
 set backspace=2
 
+" Set new splits to go right/below. No idea why this isn't default
+set splitright
+set splitbelow 
+
 syntax on
 
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
@@ -162,6 +166,9 @@ nnoremap Y y$
 nnoremap <leader>] >i{<CR>
 nnoremap <leader>[ <i{<CR>
 
+" Insert newline
+map <leader><Enter> o<ESC>
+
 " Strip trailing whitespace (,ss)
 function! StripWhitespace ()
     let save_cursor = getpos(".")
@@ -176,6 +183,8 @@ noremap <leader>ss :call StripWhitespace ()<CR>
 nmap <leader>e :TlistToggle<CR>
 
 " Setup filter list for quicksilver
+" Looks like wildmenu + wildignore might be a much better alternative 
+" to this
 let g:QSFilter="*.pyc"
 
 " Setup relative linenumbers & toggle
