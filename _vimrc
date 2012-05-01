@@ -61,6 +61,8 @@ set directory=$HOME/.vim/tmp
 set tags=./tags;/.;
 autocmd filetype cpp setlocal tags+=/usr/include/boost/tags
 
+" TODO: Tidy up these pythong bits (filetype and setlocal would 
+" be better used for most)
 autocmd BufReadPre SConstruct set filetype=python
 autocmd BufReadPre SConscript set filetype=python
 autocmd BufNewFile,BufRead *.py set softtabstop=4
@@ -76,6 +78,10 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 " Use tabs in html & css files
 autocmd filetype html setl noexpandtab ts=2 shiftwidth=2
 autocmd filetype css setl noexpandtab ts=2 shiftwidth=2
+
+" Use spaces (but only 2 of them) in xml 
+autocmd filetype xml setl ts=2 shiftwidth=2
+autocmd filetype xsd setl ts=2 shiftwidth=2
 
 set laststatus=2
 set statusline="%f%y%=#%n %l/%L%,%c%V"
