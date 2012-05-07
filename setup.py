@@ -161,7 +161,7 @@ class Linux(Common):
         ''' Installs other things (in this case oh-my-zsh) '''
         getZsh = False
         try:
-            getZsh = (self.config.get( 'General','OhMyZsh' ) == 1)
+            getZsh = (self.config.get( 'General','OhMyZsh' ) == '1')
         except:
             pass
         if getZsh:
