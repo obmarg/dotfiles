@@ -39,3 +39,11 @@ if [ -e $ZSH/oh-my-zsh.sh ] ; then
     # Prepend the hostname to the prompt
     PROMPT='%{$fg[yellow]%}λ %{$fg[green]%}%m '$PROMPT
 fi
+
+if [ -e ~/.profile ] ; then 
+    source ~/.profile
+fi
+
+if [ -e ~/.localrc ] ; then 
+    source ~/.localrc
+fi

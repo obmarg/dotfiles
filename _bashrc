@@ -105,11 +105,6 @@ fi
 # Disable Ctrl+S/Ctrl-Q suspend stuff
 stty -ixon
 
-export SCONSFLAGS='-j3 -D debug=1'
-
-if [ -e ~/.ssh/agent.sh ] ; then
-    . ~/.ssh/agent.sh
-fi
-if [ -e /usr/local/bin/virtualenvwrapper.sh ] ; then
-    source /usr/local/bin/virtualenvwrapper.sh
+if [ -e ~/.localrc ] ; then 
+    source ~/.localrc
 fi
