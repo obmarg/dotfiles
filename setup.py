@@ -6,6 +6,7 @@ import subprocess
 import shutil
 import urllib
 import re
+from ConfigParser import ConfigParser
 from utils import Prompt, LinkFile, Unzip
 
 mimeHandlers = {
@@ -16,40 +17,25 @@ extHandlers = {
         }
 
 class Common(object):
-    linkOptions = {}
     dotfiles = {}
     vimDir = os.path.expanduser( os.path.join( '~', '.vim' ) )
     vimTmp = os.path.join( vimDir, 'tmp' )
-    configFile = 'dotfiles.conf'
-    configExampleFile = 'dotfiles.conf'
-
-    # Vim Plugins from vim.org
-    vimOrgPlugins = {
-            'taglist' : 7701,
-            }
-    # Vim plugins from git repos
-    vimGitPlugins = {
-            'quicksilver' : 'git://github.com/obmarg/quicksilver.vim.git',
-            'snipmate' : 'git://github.com/msanders/snipmate.vim.git',
-            'pyrepl' : 'git://github.com/Bogdanp/pyrepl.vim.git',
-            'vim-fugitive' : 'https://github.com/tpope/vim-fugitive.git',
-            'mustache.vim' : 'git://github.com/juvenn/mustache.vim.git',
-            'vim-coffee-script' : 'git://github.com/kchmck/vim-coffee-script.git',
-            'scss-syntax' : 'git://github.com/cakebaker/scss-syntax.vim.git',
-            'less-syntax' : 'git://github.com/groenewege/vim-less',
-            'vim-smartinput' : 'git://github.com/kana/vim-smartinput.git',
-            }
 
     vimDownloadUrl = "http://www.vim.org/scripts/download_script.php?src_id="
     pathogenVimOrgId = 16224
 
+    configFile = 'dotfiles.conf'
+
     def __init__( self, options ):
         self.bundlePath = os.path.join( self.vimDir, 'bundle', '' )
         self.clean = options.clean
-        self.LoadConfig()
+        self.LoadConfig( )
 
     def LoadConfig( self ):
-        pass
+        self.config = ConfigParser()
+        self.config.read( self.configFile )
+        self.vimGitPlugins = dict( self.config.items('VimGitPlugins') )
+        self.vimOrgPlugins = dict( self.config.items('VimOrgPlugins') )
 
     def Install(self):
         """ Installs everything """
@@ -66,7 +52,7 @@ class Common(object):
     def CopyDotFiles(self):
         """ Copys dot files to appropriate locations """
         for s, d in self.dotfiles.iteritems():
-            LinkFile( s, d, *self.linkOptions )
+            LinkFile( s, d )
 
     def InstallPathogen( self ):
         pathogenFile = os.path.join( self.vimDir, 'autoload', 'pathogen.vim' )
