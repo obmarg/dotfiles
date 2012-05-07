@@ -7,7 +7,7 @@ import shutil
 import urllib
 import re
 from ConfigParser import ConfigParser
-from utils import Prompt, LinkFile, Unzip
+from utils import Prompt, LinkFile, Unzip, GetGit
 
 mimeHandlers = {
         'application/zip' : Unzip
@@ -48,6 +48,7 @@ class Common(object):
         if not os.path.exists( self.vimTmp ):
             print "Creating vim temp folder at %s" % self.vimTmp
             os.makedirs( self.vimTmp )
+        self.InstallOthers()
 
     def CopyDotFiles(self):
         """ Copys dot files to appropriate locations """
@@ -69,23 +70,6 @@ class Common(object):
         if not os.path.exists( self.bundlePath ):
             print "%s does not exist. Creating" % self.bundlePath
             os.makedirs( self.bundlePath )
-
-    def InstallVimPluginFromGit( self, name, url ):
-        destPath = os.path.join( self.bundlePath, name )
-        if os.path.exists( destPath ):
-            print "%s already installed.  Pulling from origin" % name
-            cwd = os.getcwd()
-            os.chdir( destPath )
-            try:
-                subprocess.check_call( 'git pull', shell=True )
-            finally:
-                os.chdir( cwd )
-        else:
-            print "Installing %s from remote repo" % name
-            subprocess.check_call( 
-                    'git clone "%s" "%s"' % ( url, destPath ),
-                    shell=True
-                    )
 
     def InstallVimPluginFromWeb( self, name, vimOrgId ):
         """ Installs a vim plug using pathogen """
@@ -116,7 +100,8 @@ class Common(object):
         """ Installs vim plugins.  Pathogen first, followed by others """
         self.InstallPathogen()
         for name, url in self.vimGitPlugins.iteritems():
-            self.InstallVimPluginFromGit( name, url )
+            destPath = os.path.join( self.bundlePath, name )
+            GetGit( name, url, destPath )
         for name, vimOrgId in self.vimOrgPlugins.iteritems():
             self.InstallVimPluginFromWeb( name, vimOrgId )
 
@@ -152,6 +137,10 @@ class Common(object):
             shutil.copy( 'ir_black.vim', destPath )
         else:
             print "ir_black is already in place. Skipping"
+
+    def InstallOthers( self ):
+        '''To be overridden by child classes'''
+        pass
         
 
 class Windows(Common):
@@ -164,7 +153,20 @@ class Linux(Common):
     dotfiles = {
             '_vimrc' : os.path.join( '~', '.vimrc' ),
             '_bashrc' : os.path.join( '~', '.bashrc' ),
+            '_zshrc' : os.path.join( '~', '.zshrc' ),
             }
+    ohMyZshUrl = 'git://github.com/robbyrussell/oh-my-zsh.git'
+
+    def InstallOthers( self ):
+        ''' Installs other things (in this case oh-my-zsh) '''
+        getZsh = False
+        try:
+            getZsh = (self.config.get( 'General','OhMyZsh' ) == 1)
+        except:
+            pass
+        if getZsh:
+            destPath = os.path.expanduser( '~/.oh-my-zsh' )
+            GetGit( 'Oh my zsh', self.ohMyZshUrl, destPath )
 
 if __name__ == "__main__":
     parser = optparse.OptionParser()

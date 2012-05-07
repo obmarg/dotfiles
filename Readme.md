@@ -9,9 +9,14 @@ Setup.py
 ---
 The setup.py script included in this repository can be used to automatically configure a PC to make use of the dotfiles from this repository. Currently, it can:
 
-- Optionally link _vimrc & _bashrc to the appropriate dotfiles in the users home directory.  The original files (if there are any) will be stored as ~/.bashrc.back etc.
+- Optionally link _vimrc & _bashrc & _zshrc to the appropriate dotfiles in the users home directory.  The original files (if there are any) will be stored as ~/.bashrc.back etc.
 - Install the vim pathogen plugin from vim.org to allow easy management of vim plugins.
 - Install or update vim plugins from vim.org & git repositories as configured in dotfiles.conf
+- Install oh-my-zsh
+
+Config
+-
+Configuration is setup in dotfiles.conf.  There's comments in there explaining what everything does
 
 Usage
 -

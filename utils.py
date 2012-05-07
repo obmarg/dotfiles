@@ -90,3 +90,25 @@ def Unzip( filename, destPath ):
     print "Done.  Deleting %s" % filename
     os.unlink( filename )
 
+def GetGit( name, url, destPath ):
+    '''
+    Clones a git repo, or updates if already cloned
+    @param: name        The name of the project
+    @param: url         The url of the git repository
+    @param: destPath    The destination folder for the repo
+    '''
+    if os.path.exists( destPath ):
+        print "%s already installed.  Pulling from origin" % name
+        cwd = os.getcwd()
+        try:
+            os.chdir( destPath )
+            subprocess.check_call( 'git pull', shell=True )
+        finally:
+            os.chdir( cwd )
+    else:
+        print "Installing %s from remote repo" % name
+        subprocess.check_call( 
+                'git clone "%s" "%s"' % ( url, destPath ),
+                shell=True
+                )
+
