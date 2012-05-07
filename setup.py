@@ -10,6 +10,7 @@ import re
 
 def LinkFile( orig, target, prompt=True, force=False, mkdirs=True ):
     actualTarget = os.path.expanduser( target )
+    shouldBackup = False
     if os.path.exists( actualTarget ):
         if os.path.islink( actualTarget ):
             if( os.path.samefile( actualTarget, orig ) ):
@@ -35,7 +36,7 @@ def LinkFile( orig, target, prompt=True, force=False, mkdirs=True ):
                             )
         elif not force:
             return
-        os.unlink( actualTarget )
+        os.rename( actualTarget, actualTarget + '.orig' )
     parentDir = os.path.dirname( actualTarget ) 
     if not os.path.exists( parentDir ):
         if mkdirs:
