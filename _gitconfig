@@ -1,0 +1,17 @@
+[user]
+	email = grambo@grambo.me.uk
+	name = Graeme Coupar
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[status]
+    relativePaths = false
+[core]
+	editor = vim
+[alias]
+    d = diff
+    dc = diff --cached
+    lc = log ORIG_HEAD.. --stat --no-merges
+    gl = log --oneline --decorate --stat --graph
+    st = status -sb

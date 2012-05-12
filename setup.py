@@ -154,7 +154,8 @@ class Linux(Common):
             '_vimrc' : os.path.join( '~', '.vimrc' ),
             '_bashrc' : os.path.join( '~', '.bashrc' ),
             '_zshrc' : os.path.join( '~', '.zshrc' ),
-            '_tmux.conf' : os.path.join( '~', '.tmux.conf' )
+            '_tmux.conf' : os.path.join( '~', '.tmux.conf' ),
+            '_gitconfig' : os.path.join( '~', '.gitconfig' ),
             }
     ohMyZshUrl = 'git://github.com/robbyrussell/oh-my-zsh.git'
 

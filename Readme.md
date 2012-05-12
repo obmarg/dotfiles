@@ -5,6 +5,10 @@ This repository contains my dotfiles and a python script that takes care of movi
 
 Currently the dotfiles consist of my vimrc and my bashrc.  Most of the vimrc contains inline documentation, so feel free to have a browse and steal ideas.
 
+If anyone feels like cloning the repository, then it's worth mentioning that there are some configuration options very specific to me.  I'll attempt to mention all of them in this readme, but I may forget. 
+
+At present, _gitconfig at least will have my name & email address contained within it.  You will probably want to update this file
+
 Setup.py
 ---
 The setup.py script included in this repository can be used to automatically configure a PC to make use of the dotfiles from this repository. Currently, it can:
