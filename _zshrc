@@ -26,10 +26,24 @@ ZSH_THEME="norm"
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
+# Check the current platform
+platform='unknown'
+unamestr=`uname`
+if [[ $unamestr == 'Linux' ]]; then
+    platform='linux'
+elif [[ $unamestr == 'Darwin' ]]; then
+    platform='macos'
+fi
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git macports mercurial node npm osx pip python)
+if [[ $platform == 'Linux' ]]; then
+    plugins=($plugins debian ssh-agent)
+elif [[ $platform == 'macos' ]]; then
+   plugins=($plugins macports osx)
+fi 
 
 if [ -e $ZSH/oh-my-zsh.sh ] ; then
     source $ZSH/oh-my-zsh.sh
