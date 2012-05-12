@@ -39,7 +39,7 @@ fi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git macports mercurial node npm osx pip python)
-if [[ $platform == 'Linux' ]]; then
+if [[ $platform == 'linux' ]]; then
     plugins=($plugins debian ssh-agent)
 elif [[ $platform == 'macos' ]]; then
    plugins=($plugins macports osx)
