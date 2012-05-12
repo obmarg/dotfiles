@@ -34,7 +34,9 @@ def DoLink( orig, target ):
     @param: target  The target path
     '''
     if os.path.exists( target ):
-        os.rename( target, target + '.orig' )
+        backup = target + '.orig'
+        os.rename( target, backup )
+        print "Backing up original %s to %s" % ( target, backup )
     parentDir = os.path.dirname( target ) 
     if not os.path.exists( parentDir ):
         print "Making path %s" % parentDir
@@ -67,6 +69,8 @@ def LinkFile( orig, target ):
                     stdout = sys.stdout,
                     stderr = sys.stderr
                     )
+            # Call LinkFile again, so we get prompted after the diff
+            LinkFile( orig, target )
         Prompt( 'Action? ', {
             'replace' : lambda: DoLink( orig, actualTarget ),
             'skip' : lambda: None,
