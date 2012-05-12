@@ -54,6 +54,9 @@ if [ -e $ZSH/oh-my-zsh.sh ] ; then
     PROMPT='%{$fg[yellow]%}λ %{$fg[green]%}%m '$PROMPT
 fi
 
+# Update some git aliases to personal versions
+alias gst='git st'
+
 if [ -e ~/.profile ] ; then 
     source ~/.profile
 fi
