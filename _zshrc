@@ -64,3 +64,5 @@ fi
 if [ -e ~/.localrc ] ; then 
     source ~/.localrc
 fi
+
+alias rake="noglob rake"
