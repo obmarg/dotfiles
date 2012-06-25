@@ -38,7 +38,7 @@ fi
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-flow mercurial node npm pip python)
+plugins=(git git-flow mercurial node npm pip python virtualenvwrapper)
 if [[ $platform == 'linux' ]]; then
     plugins=($plugins debian ssh-agent)
 elif [[ $platform == 'macos' ]]; then
@@ -56,6 +56,7 @@ fi
 
 # Update some git aliases to personal versions
 alias gst='git st'
+alias gd='git diff'
 
 if [ -e ~/.profile ] ; then 
     source ~/.profile
@@ -72,4 +73,4 @@ alias gf="git flow"
 alias gff="git flow feature"
 alias gffs="git flow feature start"
 alias gfff="git flow feature finish"
-
+alias gffc="git flow feature checkout"
