@@ -104,6 +104,7 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 let mapleader = ","
 
 call pathogen#infect()
+call pathogen#helptags()
 
 " Hotkey for pasting without fucking up formatting
 set pastetoggle=<F2>
@@ -192,6 +193,12 @@ nmap <leader>e :TlistToggle<CR>
 " Looks like wildmenu + wildignore might be a much better alternative 
 " to this
 let g:QSFilter="*.pyc"
+
+" Setup some python mode settings
+let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
+let g:pymode_lint_ignore = "W391,E201,E202"
+
+nnoremap <F5> :GundoToggle<CR>
 
 " Setup relative linenumbers & toggle
 if exists("+relativenumber")
