@@ -110,7 +110,7 @@ class Common(object):
         ''' Cleans any vim plugins that setup.py has not installed '''
         print "Cleaning out old plugins"
         numCleaned = 0
-        plugins = self.vimGitPlugins
+        plugins = dict( self.vimGitPlugins )
         plugins.update( self.vimOrgPlugins )
         for entry in os.listdir( self.bundlePath ):
             fullPath = os.path.join( self.bundlePath, entry )
