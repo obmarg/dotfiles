@@ -34,9 +34,21 @@ class Common(object):
 
     def LoadConfig( self ):
         self.config = ConfigParser()
-        self.config.read( self.configFile )
+        self.config.read( [ self.configFile, self.localConfigFile ] )
         self.vimGitPlugins = dict( self.config.items('VimGitPlugins') )
         self.vimOrgPlugins = dict( self.config.items('VimOrgPlugins') )
+        disablePlugins = [
+                key for key, value in self.config.items("DisableVimPlugins")
+                ]
+        for plugin in disablePlugins:
+            try:
+                del self.vimGitPlugins[plugin]
+            except KeyError:
+                pass
+            try:
+                del self.vimOrgPlugins[plugin]
+            except KeyError:
+                pass
 
     def Install(self):
         """ Installs everything """

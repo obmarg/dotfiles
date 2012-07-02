@@ -1,0 +1,5 @@
+[DisableVimPlugins]
+# Fill in the names of any plugins you wish to disable here
+# For example:
+# python-mode=
+test = somethin
