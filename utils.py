@@ -3,6 +3,7 @@ import sys
 import subprocess
 import zipfile
 
+
 def Prompt( prompt, options ):
     '''
     Prompts the user for input
@@ -13,19 +14,20 @@ def Prompt( prompt, options ):
     entryToActionMap = []
     optionsList = []
     usedPrefixes = []
-    for (text,func) in options.iteritems():
+    for (text, func) in options.iteritems():
         entries = [ text ]
         if text[0] not in usedPrefixes:
             text = text[0] + '(%s)' % text[1:]
             entries.append( text[0] )
             usedPrefixes.append( text[0] )
-        entryToActionMap.append( (entries,func) )
+        entryToActionMap.append( (entries, func) )
         optionsList.append( text )
     while True:
         action = raw_input( prompt + ', '.join( optionsList ) )
-        for (entries,actionFunc) in entryToActionMap:
+        for (entries, actionFunc) in entryToActionMap:
             if action in entries:
                 return actionFunc()
+
 
 def DoLink( orig, target ):
     '''
@@ -37,7 +39,7 @@ def DoLink( orig, target ):
         backup = target + '.orig'
         os.rename( target, backup )
         print "Backing up original %s to %s" % ( target, backup )
-    parentDir = os.path.dirname( target ) 
+    parentDir = os.path.dirname( target )
     if not os.path.exists( parentDir ):
         print "Making path %s" % parentDir
         os.makedirs( parentDir )
@@ -47,27 +49,28 @@ def DoLink( orig, target ):
     else:
         # Probably just python < 3.2 on windows.
         # Fall back on mklink
-        subprocess.check_call( [ 
+        subprocess.check_call( [
             'mklink', target, os.path.abspath( orig )
             ], shell=True )
 
+
 def LinkFile( orig, target ):
     actualTarget = os.path.expanduser( target )
-    shouldBackup = False
     if not os.path.exists( actualTarget ):
         DoLink( orig, actualTarget )
     else:
         if os.path.islink( actualTarget ):
             if( os.path.samefile( actualTarget, orig ) ):
-            	print "%s is already symlinked in place." % orig
-            	return
+                print "%s is already symlinked in place." % orig
+                return
         print "%s already exists" % target
+
         def DoDiff():
             origFullPath = os.path.abspath( orig )
             subprocess.call(
                     [ 'diff', '-u', actualTarget, origFullPath ],
-                    stdout = sys.stdout,
-                    stderr = sys.stderr
+                    stdout=sys.stdout,
+                    stderr=sys.stderr
                     )
             # Call LinkFile again, so we get prompted after the diff
             LinkFile( orig, target )
@@ -77,7 +80,8 @@ def LinkFile( orig, target ):
             'quit' : quit,
             'diff' : DoDiff
             } )
-    
+
+
 def Unzip( filename, destPath ):
     if not os.path.exists( filename ):
         print "Unzip Error: File %s does not exist" % filename
@@ -94,6 +98,7 @@ def Unzip( filename, destPath ):
                 )
     print "Done.  Deleting %s" % filename
     os.unlink( filename )
+
 
 def GetGit( name, url, destPath ):
     '''
@@ -112,7 +117,7 @@ def GetGit( name, url, destPath ):
             os.chdir( cwd )
     else:
         print "Installing %s from remote repo" % name
-        subprocess.check_call( 
+        subprocess.check_call(
                 'git clone "%s" "%s"' % ( url, destPath ),
                 shell=True
                 )

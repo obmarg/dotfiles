@@ -1,20 +1,20 @@
 #!/usr/bin/python
 
 import optparse
-import os, sys
-import subprocess
+import os
 import shutil
 import urllib
 import re
 from ConfigParser import ConfigParser
-from utils import Prompt, LinkFile, Unzip, GetGit
+from utils import LinkFile, Unzip, GetGit
 
 mimeHandlers = {
-        'application/zip' : Unzip
+        'application/zip': Unzip
         }
 extHandlers = {
-        '.zip' : Unzip
+        '.zip': Unzip
         }
+
 
 class Common(object):
     dotfiles = {}
@@ -25,6 +25,7 @@ class Common(object):
     pathogenVimOrgId = 16224
 
     configFile = 'dotfiles.conf'
+    localConfigFile = 'dotfiles.local.conf'
 
     def __init__( self, options ):
         self.bundlePath = os.path.join( self.vimDir, 'bundle', '' )
@@ -81,7 +82,7 @@ class Common(object):
         print "Donwloading %s from %s" % ( name, url )
         filename, info = urllib.urlretrieve( url )
         origFile = info.getheader( 'content-disposition' )
-        #Strip out filename bit 
+        #Strip out filename bit
         origFile = re.sub( '.*filename=', '', origFile )
         origExt = origFile[origFile.rfind( '.' ):]
         print "Saved to %s" % filename
@@ -94,7 +95,7 @@ class Common(object):
             extHandlers[ origExt ]( filename, destPath )
         else:
             # Just copy to destination
-            shutil.move( filename, os.path.join( destPath, origFile ) ) 
+            shutil.move( filename, os.path.join( destPath, origFile ) )
 
     def InstallVimPlugins(self):
         """ Installs vim plugins.  Pathogen first, followed by others """
@@ -109,18 +110,14 @@ class Common(object):
         ''' Cleans any vim plugins that setup.py has not installed '''
         print "Cleaning out old plugins"
         numCleaned = 0
+        plugins = self.vimGitPlugins
+        plugins.update( self.vimOrgPlugins )
         for entry in os.listdir( self.bundlePath ):
             fullPath = os.path.join( self.bundlePath, entry )
-            if os.path.isdir( fullPath ):
-                shouldDelete = True
-                if entry in self.vimGitPlugins:
-                    shouldDelete = False
-                if entry in self.vimOrgPlugins:
-                    shouldDelete = False
-                if shouldDelete:
-                    print "Removing %s" % entry
-                    numCleaned += 1
-                    shutil.rmtree( fullPath )
+            if os.path.isdir( fullPath ) and entry not in plugins:
+                print "Removing %s" % entry
+                numCleaned += 1
+                shutil.rmtree( fullPath )
         if numCleaned == 0:
             print "No plugins removed"
         else:
@@ -141,21 +138,22 @@ class Common(object):
     def InstallOthers( self ):
         '''To be overridden by child classes'''
         pass
-        
+
 
 class Windows(Common):
     vimDir = os.path.expanduser( os.path.join( '~', 'vimfiles' ) )
     dotfiles = {
-            '_vimrc' : os.path.join( '~', '_vimrc' )
+            '_vimrc': os.path.join( '~', '_vimrc' )
             }
+
 
 class Linux(Common):
     dotfiles = {
-            '_vimrc' : os.path.join( '~', '.vimrc' ),
-            '_bashrc' : os.path.join( '~', '.bashrc' ),
-            '_zshrc' : os.path.join( '~', '.zshrc' ),
-            '_tmux.conf' : os.path.join( '~', '.tmux.conf' ),
-            '_gitconfig' : os.path.join( '~', '.gitconfig' ),
+            '_vimrc': os.path.join( '~', '.vimrc' ),
+            '_bashrc': os.path.join( '~', '.bashrc' ),
+            '_zshrc': os.path.join( '~', '.zshrc' ),
+            '_tmux.conf': os.path.join( '~', '.tmux.conf' ),
+            '_gitconfig': os.path.join( '~', '.gitconfig' ),
             }
     ohMyZshUrl = 'git://github.com/robbyrussell/oh-my-zsh.git'
 
@@ -163,7 +161,7 @@ class Linux(Common):
         ''' Installs other things (in this case oh-my-zsh) '''
         getZsh = False
         try:
-            getZsh = (self.config.get( 'General','OhMyZsh' ) == '1')
+            getZsh = (self.config.get( 'General', 'OhMyZsh' ) == '1')
         except:
             pass
         if getZsh:
@@ -172,15 +170,15 @@ class Linux(Common):
 
 if __name__ == "__main__":
     parser = optparse.OptionParser()
-    parser.add_option( 
-            '-c', '--clean', dest='clean', 
-            help='clean out vim plugins', 
+    parser.add_option(
+            '-c', '--clean', dest='clean',
+            help='clean out vim plugins',
             action='store_true', default=False
             )
     (options, args) = parser.parse_args()
 
     if os.name == 'posix':
-       obj = Linux( options  )
+        obj = Linux( options  )
     elif os.name == 'nt':
         obj = Windows( options )
     else:
