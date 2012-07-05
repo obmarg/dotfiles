@@ -150,9 +150,6 @@ map <leader>7 :b 7<CR>
 map <leader>8 :b 8<CR>
 map <leader>9 :b 9<CR>
 
-" Shortcut to use ; instead of : commands
-map ; :
-
 " Clear highlighted searches
 nmap <silent> <Leader>/ :nohlsearch<CR>
 
