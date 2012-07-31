@@ -22,6 +22,9 @@ set incsearch
 set ignorecase
 set infercase
 
+" /g mode on :s substitutions by default
+set gdefault
+
 set foldenable
 set foldmarker={,}
 set foldmethod=marker
@@ -97,8 +100,13 @@ set hidden
 set history=2000
 set undolevels=2000
 
-" Ignore some filetypes
+" Ignore some file types
 set wildignore=*.swp,*.bak,*.pyc,*.class
+
+" Enable wildcard menu, rather than completing.
+" list matches, then longest common part then all
+set wildmenu
+set wildmode=list:longest,full
 
 " Remap leader to comma to save cross platform confusion
 let mapleader = ","
