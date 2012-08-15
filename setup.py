@@ -5,7 +5,7 @@ import os
 import shutil
 import urllib
 import re
-from ConfigParser import ConfigParser
+from ConfigParser import ConfigParser, NoSectionError
 from utils import LinkFile, Unzip, GetGit
 
 mimeHandlers = {
@@ -37,18 +37,21 @@ class Common(object):
         self.config.read( [ self.configFile, self.localConfigFile ] )
         self.vimGitPlugins = dict( self.config.items('VimGitPlugins') )
         self.vimOrgPlugins = dict( self.config.items('VimOrgPlugins') )
-        disablePlugins = [
-                key for key, value in self.config.items("DisableVimPlugins")
-                ]
-        for plugin in disablePlugins:
-            try:
-                del self.vimGitPlugins[plugin]
-            except KeyError:
-                pass
-            try:
-                del self.vimOrgPlugins[plugin]
-            except KeyError:
-                pass
+        try:
+            disablePlugins = [
+                    key for key, value in self.config.items("DisableVimPlugins")
+                    ]
+            for plugin in disablePlugins:
+                try:
+                    del self.vimGitPlugins[plugin]
+                except KeyError:
+                    pass
+                try:
+                    del self.vimOrgPlugins[plugin]
+                except KeyError:
+                    pass
+        except NoSectionError:
+            pass
 
     def Install(self):
         """ Installs everything """
