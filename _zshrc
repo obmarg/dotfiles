@@ -45,6 +45,14 @@ elif [[ $platform == 'macos' ]]; then
    plugins=($plugins macports osx)
 fi 
 
+if [ -e ~/.profile ] ; then 
+    source ~/.profile
+fi
+
+if [ -e ~/.localrc ] ; then 
+    source ~/.localrc
+fi
+
 if [ -e $ZSH/oh-my-zsh.sh ] ; then
     source $ZSH/oh-my-zsh.sh
 
@@ -52,14 +60,6 @@ if [ -e $ZSH/oh-my-zsh.sh ] ; then
 
     # Prepend the hostname to the prompt
     PROMPT='%{$fg[yellow]%}λ %{$fg[green]%}%m '$PROMPT
-fi
-
-if [ -e ~/.profile ] ; then 
-    source ~/.profile
-fi
-
-if [ -e ~/.localrc ] ; then 
-    source ~/.localrc
 fi
 
 # Update some git aliases to personal versions
