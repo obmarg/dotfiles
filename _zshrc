@@ -82,5 +82,6 @@ alias duc='du -s ./* | sort -n | cut -f 2- | xargs -Ix du -sh x'
 # Count lines of code
 alias loc='find -E . -regex ".*\.(cpp|c|h|hpp|py|coffee)$" | xargs -n1 wc -l | cut -f1 -d"." | paste -sd+ - | bc'
 
-# Nicer default df behaviour
+# Nicer default df & free behaviour
 alias df='df -h'
+alias free='free -m'
