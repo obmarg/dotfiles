@@ -64,27 +64,27 @@ set directory=$HOME/.vim/tmp
 set tags=./tags;/.;
 autocmd filetype cpp setlocal tags+=/usr/include/boost/tags
 
-" TODO: Tidy up these pythong bits (filetype and setlocal would 
-" be better used for most)
+" SCons files = python
 autocmd BufReadPre SConstruct set filetype=python
 autocmd BufReadPre SConscript set filetype=python
-autocmd BufNewFile,BufRead *.py set softtabstop=4
-autocmd BufNewFile,BufRead *.py set shiftwidth=4
-autocmd BufNewFile,BufRead *.py set smarttab
-" t
-" Smart indent fucks up lines starting with #
-autocmd filetype python setlocal nosmartindent
 
-" Coffee script 2 space indents
+" Python formatting rules
+au filetype python setl softtabstop=4
+au filetype python setl shiftwidth=4
+au filetype python setl smarttab
+
+" Smart indent fucks up lines starting with #
+au filetype python setl nosmartindent
+
+" Coffeescript, Ruby & XML - 2 space indents
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+au filetype ruby setl shiftwidth=2 expandtab
+au filetype xml setl shiftwidth=2 expandtab
+au filetype xsd setl shiftwidth=2 expandtab
 
 " Use tabs in html & css files
-autocmd filetype html setl noexpandtab ts=2 shiftwidth=2
-autocmd filetype css setl noexpandtab ts=2 shiftwidth=2
-
-" Use spaces (but only 2 of them) in xml 
-autocmd filetype xml setl ts=2 shiftwidth=2
-autocmd filetype xsd setl ts=2 shiftwidth=2
+au filetype html setl noexpandtab ts=2 shiftwidth=2
+au filetype css setl noexpandtab ts=2 shiftwidth=2
 
 set laststatus=2
 set statusline="%f%y%=#%n %l/%L%,%c%V"
