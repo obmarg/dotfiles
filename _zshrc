@@ -38,7 +38,7 @@ fi
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-flow mercurial node npm pip python virtualenvwrapper)
+plugins=(git git-flow github mercurial node npm pip python virtualenvwrapper)
 if [[ $platform == 'linux' ]]; then
     plugins=($plugins debian ssh-agent)
 elif [[ $platform == 'macos' ]]; then
@@ -85,3 +85,9 @@ alias loc='find -E . -regex ".*\.(cpp|c|h|hpp|py|coffee)$" | xargs -n1 wc -l | c
 # Nicer default df & free behaviour
 alias df='df -h'
 alias free='free -m'
+
+# zmv ftw
+autoload -U zmv
+# alias for zmv for no quotes
+# mmv *.c.orig orig/*.c
+alias mmv='noglob zmv -W'
