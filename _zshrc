@@ -91,3 +91,10 @@ autoload -U zmv
 # alias for zmv for no quotes
 # mmv *.c.orig orig/*.c
 alias mmv='noglob zmv -W'
+
+# Function for making a python package
+function mkpypack {
+    mkdir $1
+    touch $1/__init__.py
+}
+alias mkp='mkpypack'
