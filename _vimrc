@@ -201,7 +201,8 @@ let g:QSFilter="*.pyc"
 
 " Setup some python mode settings
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
-let g:pymode_lint_ignore = "W391,E201,E202"
+let g:pymode_lint_ignore = "W391,E201,E202,E225"
+" E225 - Whitespace around operators (messes up for should-dsl)
 
 nnoremap <F5> :GundoToggle<CR>
 
