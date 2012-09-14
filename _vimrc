@@ -64,6 +64,9 @@ set directory=$HOME/.vim/tmp
 set tags=./tags;/.;
 autocmd filetype cpp setlocal tags+=/usr/include/boost/tags
 
+" Add doxygen style comments for cpp files
+autocmd filetype cpp setlocal comments-=:// comments+=://!,://
+
 " SCons files = python
 autocmd BufReadPre SConstruct set filetype=python
 autocmd BufReadPre SConscript set filetype=python
