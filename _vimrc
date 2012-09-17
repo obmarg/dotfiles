@@ -67,6 +67,9 @@ autocmd filetype cpp setlocal tags+=/usr/include/boost/tags
 " Add doxygen style comments for cpp files
 autocmd filetype cpp setlocal comments-=:// comments+=://!,://
 
+" Wrap markdown files at 79 characters
+autocmd filetype markdown set textwidth=79
+
 " SCons files = python
 autocmd BufReadPre SConstruct set filetype=python
 autocmd BufReadPre SConscript set filetype=python
