@@ -51,7 +51,7 @@ if has('gui_macvim')
 endif
 
 if &t_Co >= 256 || has("gui_running")
-    colorscheme ir_black
+    colorscheme jellybeans
 else
 	set bg=dark
 endif
