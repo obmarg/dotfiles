@@ -107,7 +107,7 @@ set history=2000
 set undolevels=2000
 
 " Ignore some file types
-set wildignore=*.swp,*.bak,*.pyc,*.class
+set wildignore+=*.swp,*.bak,*.pyc,*.class,*.o,*.so,*.a,*.zip,*.exe
 
 " Enable wildcard menu, rather than completing.
 " list matches, then longest common part then all
@@ -199,11 +199,6 @@ noremap <leader>ss :call StripWhitespace ()<CR>
 
 " Map tag list to <leader>e
 nmap <leader>e :TlistToggle<CR>
-
-" Setup filter list for quicksilver
-" Looks like wildmenu + wildignore might be a much better alternative 
-" to this
-let g:QSFilter="*.pyc"
 
 " Setup some python mode settings
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
