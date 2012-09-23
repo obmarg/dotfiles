@@ -39,7 +39,8 @@ class Common(object):
         self.vimOrgPlugins = dict( self.config.items('VimOrgPlugins') )
         try:
             disablePlugins = [
-                    key for key, value in self.config.items("DisableVimPlugins")
+                    key for key, value in
+                    self.config.items("DisableVimPlugins")
                     ]
             for plugin in disablePlugins:
                 try:
@@ -143,12 +144,13 @@ class Common(object):
         colorPath = os.path.join( self.vimDir, 'colors' )
         if not os.path.exists( colorPath ):
             os.makedirs( colorPath )
-        destPath = os.path.join( colorPath, 'ir_black.vim' )
-        if not os.path.exists( destPath ):
-            print "Copying ir_black color scheme into place"
-            shutil.copy( 'ir_black.vim', destPath )
-        else:
-            print "ir_black is already in place. Skipping"
+        srcPath = os.path.join('vim', 'colors')
+        print "Copying vim color schemes into place:"
+        for filename in os.listdir(srcPath):
+            destPath = os.path.join(colorPath, filename)
+            if not os.path.exists( destPath ):
+                print "\tCopying " + filename
+                shutil.copy(os.path.join(srcPath, filename), destPath)
 
     def InstallOthers( self ):
         '''To be overridden by child classes'''
