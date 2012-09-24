@@ -37,6 +37,9 @@ set backspace=2
 set splitright
 set splitbelow 
 
+" UTF-8 encoding by default
+set encoding=utf-8
+
 syntax on
 
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
@@ -208,6 +211,8 @@ let g:pymode_lint_ignore = "W391,E201,E202,E225,E126,E123"
 " E126 - Closing brace doesn't match indentation of opening brace
 
 nnoremap <F5> :GundoToggle<CR>
+
+let g:Powerline_symbols='unicode'
 
 " Setup relative linenumbers & toggle
 if exists("+relativenumber")
