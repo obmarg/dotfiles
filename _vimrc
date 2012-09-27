@@ -33,6 +33,9 @@ set foldopen=block,hor,mark,percent,quickfix,tag
 
 set backspace=2
 
+" Should always have at least 5 lines above & below cursor
+set scrolloff=5
+
 " Set new splits to go right/below. No idea why this isn't default
 set splitright
 set splitbelow 
