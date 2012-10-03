@@ -207,6 +207,7 @@ noremap <leader>ss :call StripWhitespace ()<CR>
 nmap <leader>e :TlistToggle<CR>
 
 " Setup some python mode settings
+let g:pymode_indent = 0
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
 let g:pymode_lint_ignore = "W391,E201,E202,E225,E126,E123"
 " E225 - Whitespace around operators (messes up for should-dsl)
