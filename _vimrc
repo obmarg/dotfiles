@@ -193,6 +193,9 @@ nnoremap <leader>[ <i{<CR>
 " Insert newline
 map <leader><Enter> o<ESC>
 
+" Map %% to current file path
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
 " Strip trailing whitespace (,ss)
 function! StripWhitespace ()
     let save_cursor = getpos(".")
