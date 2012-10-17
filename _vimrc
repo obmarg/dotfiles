@@ -113,7 +113,7 @@ set history=2000
 set undolevels=2000
 
 " Ignore some file types
-set wildignore+=*.swp,*.bak,*.pyc,*.class,*.o,*.so,*.a,*.zip,*.exe
+set wildignore+=*.swp,*.bak,*.pyc,*.class,*.o,*.so,*.a,*.zip,*.exe,*.obj
 
 " Enable wildcard menu, rather than completing.
 " list matches, then longest common part then all
