@@ -210,7 +210,7 @@ noremap <leader>ss :call StripWhitespace ()<CR>
 nmap <leader>e :TlistToggle<CR>
 
 " Alt-O should switch to alternative file
-nnoremap <A-o> :A
+nnoremap <A-o> :A<CR>
 
 " Alt-G should go to definition
 nnoremap <A-g> <C-]>
