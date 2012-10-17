@@ -209,6 +209,12 @@ noremap <leader>ss :call StripWhitespace ()<CR>
 " Map tag list to <leader>e
 nmap <leader>e :TlistToggle<CR>
 
+" Alt-O should switch to alternative file
+nnoremap <A-o> :A
+
+" Alt-G should go to definition
+nnoremap <A-g> <C-]>
+
 " Setup some python mode settings
 let g:pymode_indent = 0
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
