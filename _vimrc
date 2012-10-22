@@ -122,6 +122,8 @@ set wildmode=list:longest,full
 
 " Remap leader to comma to save cross platform confusion
 let mapleader = ","
+" And map \ to previous character search
+noremap \ ,
 
 call pathogen#infect()
 call pathogen#helptags()
