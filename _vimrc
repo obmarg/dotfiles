@@ -43,6 +43,8 @@ set splitbelow
 " UTF-8 encoding by default
 set encoding=utf-8
 
+set number
+
 syntax on
 
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
@@ -228,30 +230,3 @@ let g:pymode_lint_ignore = "W391,E201,E202,E225,E126,E123"
 nnoremap <F5> :GundoToggle<CR>
 
 let g:Powerline_symbols='unicode'
-
-" Setup relative linenumbers & toggle
-if exists("+relativenumber")
-	set relativenumber
-
-    function! NumberToggle()
-    if(&relativenumber == 1)
-        set number
-    else
-        set relativenumber
-    endif
-    endfunc
-
-    nnoremap <C-n> :call NumberToggle()<cr>
-
-    " When we've not got focus, switch to normal numbers
-    :au FocusLost * :set number
-    :au FocusGained * :set relativenumber
-
-    " When in insert mode, display normal numbers
-    autocmd InsertEnter * :set number
-    autocmd InsertLeave * :set relativenumber
-else
-
-set number
-
-endif
