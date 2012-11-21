@@ -47,9 +47,34 @@ set number
 
 syntax on
 
+set laststatus=2
+set statusline="%f%y%=#%n %l/%L%,%c%V"
+set title
+
+" Hide buffers rather than closing.
+set hidden
+
+" Lots of history
+set history=2000
+set undolevels=2000
+
+" Ignore some file types
+set wildignore+=*.swp,*.bak,*.pyc,*.class,*.o,*.so,*.a,*.zip,*.exe,*.obj
+
+" Enable wildcard menu, rather than completing.
+" list matches, then longest common part then all
+set wildmenu
+set wildmode=list:longest,full
+
+set nobackup
+set clipboard+=unnamed
+set directory=$HOME/.vim/tmp
+
+" Highlight lines > 80 characters (this doesn't work for gvim)
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 match OverLength /\%81v.\+/
 
+" Fonts and color schemes
 if has('gui_win32')
     set guifont=Ubuntu_Mono:h13:cANSI
 endif
@@ -63,10 +88,6 @@ if &t_Co >= 256 || has("gui_running")
 else
 	set bg=dark
 endif
-
-set nobackup
-set clipboard+=unnamed
-set directory=$HOME/.vim/tmp
 
 " Set up tag locations
 set tags=./tags;/.;
@@ -100,35 +121,13 @@ au filetype xsd setl shiftwidth=2 expandtab
 au filetype html setl noexpandtab ts=2 shiftwidth=2
 au filetype css setl noexpandtab ts=2 shiftwidth=2
 
-set laststatus=2
-set statusline="%f%y%=#%n %l/%L%,%c%V"
-set title
-
-" Disable this if it causes issues...
-" set autochdir
-
-" Hide buffers rather than closing.
-set hidden
-
-" Lots of history
-set history=2000
-set undolevels=2000
-
-" Ignore some file types
-set wildignore+=*.swp,*.bak,*.pyc,*.class,*.o,*.so,*.a,*.zip,*.exe,*.obj
-
-" Enable wildcard menu, rather than completing.
-" list matches, then longest common part then all
-set wildmenu
-set wildmode=list:longest,full
+call pathogen#infect()
+call pathogen#helptags()
 
 " Remap leader to comma to save cross platform confusion
 let mapleader = ","
 " And map \ to previous character search
 noremap \ ,
-
-call pathogen#infect()
-call pathogen#helptags()
 
 " Hotkey for pasting without fucking up formatting
 set pastetoggle=<F2>
