@@ -117,9 +117,9 @@ au filetype ruby setl shiftwidth=2 expandtab
 au filetype xml setl shiftwidth=2 expandtab
 au filetype xsd setl shiftwidth=2 expandtab
 
-" Use tabs in html & css files
-au filetype html setl noexpandtab ts=2 shiftwidth=2
-au filetype css setl noexpandtab ts=2 shiftwidth=2
+" Use 2 space indents in html & css files
+au filetype html setl ts=2 shiftwidth=2
+au filetype css setl ts=2 shiftwidth=2
 
 call pathogen#infect()
 call pathogen#helptags()
