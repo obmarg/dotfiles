@@ -77,7 +77,7 @@ alias gfff="git flow feature finish"
 alias gffc="git flow feature checkout"
 
 # Ordered du alias
-alias duc='du -s ./* | sort -n | cut -f 2- | xargs -Ix du -sh x'
+alias duc='du -s ./* | sort -n | cut -f 2- | sed "s/\(.*\)/\"\1\"/" | xargs -Ix du -sh x'
 
 # Count lines of code
 alias loc='find -E . -regex ".*\.(cpp|c|h|hpp|py|coffee)$" | xargs -n1 wc -l | cut -f1 -d"." | paste -sd+ - | bc'
