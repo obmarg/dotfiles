@@ -98,3 +98,6 @@ function mkpypack {
     touch $1/__init__.py
 }
 alias mkp='mkpypack'
+
+# Setup map alias to run a command on piped output
+alias map='xargs -n1'
