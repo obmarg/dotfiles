@@ -59,10 +59,10 @@ if [ -e $ZSH/oh-my-zsh.sh ] ; then
     # Customise things here
 
     # Set up my custom prompt 
-    PROMPT='%{$fg[yellow]%}λ %{$fg[green]%}%m %{$fg[yellow]%}λ %{$fg[green]%}%c %{$fg[yellow]%}→ $(git_prompt_info)%{$reset_color%}'
+    PROMPT='%{$fg[yellow]%}λ %{$fg[green]%}%m %{$fg[yellow]%}λ %{$fg[green]%}%c$(git_prompt_info)%{$fg[yellow]%} → %{$reset_color%}'
 
-    ZSH_THEME_GIT_PROMPT_PREFIX="λ %{$fg[blue]%}git %{$fg[red]%}"
-    ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg[yellow]%} → %{$reset_color%}"
+    ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%} λ %{$fg[blue]%}git %{$fg[red]%}"
+    ZSH_THEME_GIT_PROMPT_SUFFIX=""
 fi
 
 # Update some git aliases to personal versions
