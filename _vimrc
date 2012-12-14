@@ -229,3 +229,39 @@ let g:pymode_lint_ignore = "W391,E201,E202,E225,E126,E123"
 nnoremap <F5> :GundoToggle<CR>
 
 let g:Powerline_symbols='unicode'
+
+"
+" Rainbow parenthesis settings
+"
+let g:rbpt_loadcmd_toggle = 0
+
+" Enable rainbow parens for clojure.
+" May want it for others in future, not sure
+au VimEnter *.clj RainbowParenthesesToggle
+" TODO: This only starts rainbow parens if we open a clj file directly.
+"       Fix it
+au Syntax clojure RainbowParenthesesLoadRound
+au Syntax clojure RainbowParenthesesLoadSquare
+au Syntax clojure RainbowParenthesesLoadBraces
+
+" Alternative colors for rainbow parens
+" Thanks to vim-clojure & light table for the colors
+" These go from inner-most to outermost
+let g:rbpt_max = 15
+let g:rbpt_colorpairs = [
+    \ ['magenta',     'orange'],
+    \ ['cyan',        'yellow'],
+    \ ['green',       'greenyellow'],
+    \ ['yellow',      '#9B30FF'],
+    \ ['red',         '#FF00FF'],
+    \ ['magenta',     'orange'],
+    \ ['cyan',        'yellow'],
+    \ ['green',       'greenyellow'],
+    \ ['yellow',      '#9B30FF'],
+    \ ['red',         '#FF00FF'],
+    \ ['magenta',     '#836fff'],
+    \ ['cyan',        '#00ffff'],
+    \ ['green',       '#00ff7f'],
+    \ ['yellow',      '#00ff00'],
+    \ ['Grey',        '#668799'],
+    \ ]
