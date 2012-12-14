@@ -38,7 +38,8 @@ fi
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-flow github mercurial node npm pip python virtualenvwrapper lein)
+plugins=(git git-flow github mercurial node npm pip python virtualenvwrapper)
+plugins=($plugins lein rsync cp)
 if [[ $platform == 'linux' ]]; then
     plugins=($plugins debian ssh-agent)
 elif [[ $platform == 'macos' ]]; then
