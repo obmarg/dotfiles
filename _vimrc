@@ -124,6 +124,11 @@ au filetype css setl ts=2 shiftwidth=2
 call pathogen#infect()
 call pathogen#helptags()
 
+" Load matchit plugin
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
+
 " Remap leader to comma to save cross platform confusion
 let mapleader = ","
 " And map \ to previous character search
