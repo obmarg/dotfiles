@@ -93,8 +93,10 @@ endif
 set tags=./tags;/.;
 autocmd filetype cpp setlocal tags+=/usr/include/boost/tags
 
-" Add doxygen style comments for cpp files
+" Add doxygen style comments for cpp & idl files
 autocmd filetype cpp setlocal comments-=:// comments+=://!,://
+autocmd filetype idl setlocal comments-=:// comments+=://!,://
+autocmd filetype idl setlocal formatoptions+=ctroq
 
 " Wrap markdown files at 79 characters
 autocmd filetype markdown set textwidth=79
