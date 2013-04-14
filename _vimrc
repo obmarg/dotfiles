@@ -196,6 +196,14 @@ cmap w!! w !sudo tee % >/dev/null
 " Yank from cursor to end of line
 nnoremap Y y$
 
+" Map Ctrl-A/Ctrl-E to home/end
+nnoremap <C-A> ^
+nnoremap <C-E> $
+vnoremap <C-A> ^
+vnoremap <C-E> $
+inoremap <C-A> <C-O>^
+inoremap <C-E> <C-O>$
+
 " Indent/unident block (,]) (,[)
 nnoremap <leader>] >i{<CR>
 nnoremap <leader>[ <i{<CR>
