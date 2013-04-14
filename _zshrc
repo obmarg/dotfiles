@@ -34,6 +34,8 @@ antigen-bundle virtualenvwrapper
 antigen-bundle lein
 antigen-bundle rsync
 antigen-bundle cp
+antigen-bundle bower
+antigen-bundle colored-man
 
 antigen-bundle zsh-users/zsh-completions
 
@@ -43,6 +45,7 @@ if [[ $platform == 'linux' ]]; then
 elif [[ $platform == 'macos' ]]; then
     antigen-bundle macports
     antigen-bundle osx
+    antigen-bundle brew
 fi 
 
 antigen-theme norm
