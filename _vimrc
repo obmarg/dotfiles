@@ -1,5 +1,41 @@
 set nocompatible
 
+" Disable filetype for vundle
+filetype off
+
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'kien/ctrlp.vim'
+Bundle 'Bogdanp/pyrepl.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'juvenn/mustache.vim'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'groenewege/vim-less'
+Bundle 'kana/vim-smartinput'
+Bundle 'sjl/gundo.vim'
+Bundle 'klen/python-mode'
+Bundle 'tpope/vim-cucumber'
+Bundle 'AndrewRadev/linediff.vim'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-markdown'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'vim-scripts/OmniCppComplete'
+Bundle 'vim-scripts/a.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-foreplay'
+Bundle 'nelstrom/vim-visual-star-search'
+Bundle 'editorconfig/editorconfig-vim'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'tpope/vim-repeat'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-obsession'
+
 filetype plugin indent on
 
 set makeprg=scons
