@@ -233,6 +233,9 @@ nnoremap <A-o> :A<CR>
 " Alt-G should go to definition
 nnoremap <A-g> <C-]>
 
+" Cmd-Enter should eval current clojure form
+nnoremap <D-Return> :Eval<CR>
+
 " Setup some python mode settings
 let g:pymode_indent = 0
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
@@ -244,6 +247,9 @@ let g:pymode_lint_ignore = "W391,E201,E202,E225,E126,E123"
 nnoremap <F5> :GundoToggle<CR>
 
 let g:Powerline_symbols='unicode'
+
+" Vim-clojure-static settings
+let g:clojure_align_multiline_strings=1
 
 "
 " Rainbow parenthesis settings
@@ -278,5 +284,5 @@ let g:rbpt_colorpairs = [
     \ ['cyan',        '#00ffff'],
     \ ['green',       '#00ff7f'],
     \ ['yellow',      '#00ff00'],
-    \ ['Grey',        '#668799'],
+    \ ['DarkGrey',    '#668799'],
     \ ]
