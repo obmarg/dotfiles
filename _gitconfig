@@ -17,3 +17,5 @@
     st = status -sb
 [push]
 	default = upstream
+[credential]
+	helper = osxkeychain
