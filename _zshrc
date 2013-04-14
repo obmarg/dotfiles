@@ -109,3 +109,10 @@ alias mkp='mkpypack'
 
 # Setup map alias to run a command on piped output
 alias map='xargs -n1'
+
+# cd to root of git repository
+function cdr {
+    cd $(git rev-parse --show-toplevel 2> /dev/null)
+}
+
+# TODO: Write similar cd function for hg
