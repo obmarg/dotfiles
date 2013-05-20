@@ -106,6 +106,8 @@ set nobackup
 set clipboard+=unnamed
 set directory=$HOME/.vim/tmp
 
+set noswapfile
+
 " Highlight lines > 80 characters (this doesn't work for gvim)
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 match OverLength /\%81v.\+/
@@ -158,6 +160,9 @@ au filetype xsd setl shiftwidth=2 expandtab
 " Use 2 space indents in html & css files
 au filetype html setl ts=2 shiftwidth=2
 au filetype css setl ts=2 shiftwidth=2
+
+" Use tabs in stylus files
+au filetype stylus setl noexpandtab
 
 call pathogen#infect()
 call pathogen#helptags()
