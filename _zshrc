@@ -1,4 +1,13 @@
 
+# Load custom profiles first
+if [ -e ~/.profile ] ; then 
+    source ~/.profile
+fi
+
+if [ -e ~/.localrc ] ; then 
+    source ~/.localrc
+fi
+
 # Load antigen & oh-my-zsh
 source "$HOME/.antigen/antigen.zsh"
 antigen-use oh-my-zsh
@@ -59,14 +68,6 @@ PROMPT='%{$fg[yellow]%}λ %{$fg[green]%}%m %{$fg[yellow]%}λ %{$fg[green]%}%c$(g
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%} λ %{$fg[blue]%}git %{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
-
-if [ -e ~/.profile ] ; then 
-    source ~/.profile
-fi
-
-if [ -e ~/.localrc ] ; then 
-    source ~/.localrc
-fi
 
 # Globbing tends to brake some rake functionality, so disable it
 alias rake="noglob rake"
