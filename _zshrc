@@ -66,12 +66,15 @@ if [ -e $ZSH/oh-my-zsh.sh ] ; then
     ZSH_THEME_GIT_PROMPT_SUFFIX=""
 fi
 
+# Globbing tends to brake some rake functionality, so disable it
+alias rake="noglob rake"
+
 # Update some git aliases to personal versions
 alias gst='git st'
 alias gd='git diff'
 
-# Globbing tends to brake some rake functionality, so disable it
-alias rake="noglob rake"
+# Publish current branch
+alias gpub='git push -u origin $(current_branch)'
 
 # Some git flow aliases
 alias gf="git flow"
