@@ -35,6 +35,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-obsession'
+Bundle 'scrooloose/syntastic'
 
 filetype plugin indent on
 
