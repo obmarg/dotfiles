@@ -46,6 +46,7 @@ antigen-bundle cp
 antigen-bundle bower
 antigen-bundle colored-man
 antigen-bundle vundle
+antigen-bundle coffee
 
 antigen-bundle zsh-users/zsh-completions
 
