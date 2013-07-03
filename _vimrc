@@ -36,6 +36,9 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-obsession'
 Bundle 'scrooloose/syntastic'
+Bundle 'nono/vim-handlebars'
+Bundle 'wavded/vim-stylus'
+Bundle 'airblade/vim-gitgutter'
 
 filetype plugin indent on
 
@@ -47,7 +50,7 @@ set copyindent  "Check this is good enough
 set shiftround  "Round to shiftwidth with > and <
 set tabstop=4
 set shiftwidth=4
-set expandtab 
+set expandtab
 
 set guioptions-=T " Remove the toolbar from GUI
 set vb t_vb=
@@ -75,7 +78,7 @@ set scrolloff=5
 
 " Set new splits to go right/below. No idea why this isn't default
 set splitright
-set splitbelow 
+set splitbelow
 
 " UTF-8 encoding by default
 set encoding=utf-8
@@ -181,7 +184,7 @@ noremap \ ,
 " Hotkey for pasting without fucking up formatting
 set pastetoggle=<F2>
 
-" Uncomment this for mouse support 
+" Uncomment this for mouse support
 " set mouse=a
 
 " I might kill myself for this, but disable arrow keys:
