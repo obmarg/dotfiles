@@ -242,8 +242,7 @@ cmap w!! w !sudo tee % >/dev/null
 nnoremap Y y$
 
 " Map Ctrl-A/Ctrl-E to home/end
-nnoremap <C-A> ^
-nnoremap <C-E> $
+" (but not in normal, as there it has a use)
 vnoremap <C-A> ^
 vnoremap <C-E> $
 inoremap <C-A> <C-O>^
