@@ -281,7 +281,7 @@ nnoremap <A-g> <C-]>
 nnoremap <D-Return> :Eval<CR>
 
 " Setup some python mode settings
-let g:pymode_indent = 0
+let g:pymode_lint_write = 0
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
 let g:pymode_lint_ignore = "W391,E201,E202,E225,E126,E123"
 " E225 - Whitespace around operators (messes up for should-dsl)
