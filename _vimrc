@@ -168,6 +168,9 @@ au filetype css setl ts=2 shiftwidth=2
 " Use tabs in stylus files
 au filetype stylus setl noexpandtab
 
+" Use mustache formatting for ractive files
+autocmd BufRead,BufNewFile *.rac setl filetype=mustache
+
 call pathogen#infect()
 call pathogen#helptags()
 
