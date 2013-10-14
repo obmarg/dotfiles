@@ -79,6 +79,13 @@ alias gd='git diff'
 # Publish current branch
 alias gpub='git push -u origin $(current_branch)'
 
+# Pull & Rebase
+alias glr='git pull --rebase'
+
+# Edit & add conflict files
+alias gec='git status -sb | grep ^UU | cut -d" " -f 2 | xargs mvim'
+alias gac='git status -sb | grep ^UU | cut -d" " -f 2 | xargs git add'
+
 # Some git flow aliases
 alias gf="git flow"
 alias gff="git flow feature"
@@ -88,6 +95,7 @@ alias gffc="git flow feature checkout"
 
 # Ordered du alias
 alias duc='du -s ./* | sort -n | cut -f 2- | sed "s/\(.*\)/\"\1\"/" | xargs -Ix du -sh x'
+alias dua='du -a | sort -n | cut -f 2- | sed "s/\(.*\)/\"\1\"/" | xargs -Ix du -sh x'
 
 # Count lines of code
 if [[ `uname` == "Linux" ]] ; then
