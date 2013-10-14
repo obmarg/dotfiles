@@ -39,6 +39,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'nono/vim-handlebars'
 Bundle 'wavded/vim-stylus'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'Valloric/YouCompleteMe'
 
 filetype plugin indent on
 
