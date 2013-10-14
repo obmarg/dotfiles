@@ -43,8 +43,6 @@ Bundle 'Valloric/YouCompleteMe'
 
 filetype plugin indent on
 
-set makeprg=scons
-
 set autoindent
 set smartindent
 set copyindent  "Check this is good enough
@@ -135,6 +133,9 @@ endif
 " Set up tag locations
 set tags=./tags;/.;
 autocmd filetype cpp setlocal tags+=/usr/include/boost/tags
+
+" Use scons for cpp
+autocmd filetype cpp setlocal makeprg=scons
 
 " Add doxygen style comments for cpp & idl files
 autocmd filetype cpp setlocal comments-=:// comments+=://!,://
