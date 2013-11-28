@@ -47,6 +47,7 @@ antigen-bundle bower
 antigen-bundle colored-man
 antigen-bundle vundle
 antigen-bundle coffee
+antigen-bundle vagrant
 
 antigen-bundle zsh-users/zsh-completions
 
@@ -130,3 +131,7 @@ function cdr {
 }
 
 # TODO: Write similar cd function for hg
+
+# Rolepoint app shortcut.  Seperate commands to allow the virtualenv stuff to
+# work
+alias rpa='cd src && cd rolepoint-app'
