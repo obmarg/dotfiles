@@ -115,6 +115,10 @@ set directory=$HOME/.vim/tmp
 
 set noswapfile
 
+" Insert only one space when joining lines that contain sentence-terminating
+" punctuation like `.`.
+set nojoinspaces
+
 " Highlight lines > 80 characters (this doesn't work for gvim)
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 match OverLength /\%81v.\+/
