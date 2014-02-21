@@ -135,3 +135,9 @@ function cdr {
 # Rolepoint app shortcut.  Seperate commands to allow the virtualenv stuff to
 # work
 alias rpa='cd src && cd rolepoint-app'
+
+function fuck() {
+  if killall -9 "$2"; then
+    echo ; echo " (╯°□°）╯︵$(echo "$2"|toilet -f term -F rotate)"; echo
+  fi
+}
