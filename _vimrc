@@ -44,6 +44,7 @@ Bundle 'elzr/vim-json'
 Bundle 'rking/ag.vim'
 Bundle 'rodjek/vim-puppet'
 Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-eunuch'
 
 filetype plugin indent on
 
