@@ -45,6 +45,8 @@ Bundle 'rking/ag.vim'
 Bundle 'rodjek/vim-puppet'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-eunuch'
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'tpope/endwise'
 
 filetype plugin indent on
 
