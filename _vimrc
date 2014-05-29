@@ -47,6 +47,8 @@ Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-eunuch'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'tpope/endwise'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 
 filetype plugin indent on
 
@@ -372,3 +374,8 @@ if executable('ag')
 endif
 
 let g:syntastic_python_checkers = ['flake8']
+
+" UtilSnips configuration
+let g:UltiSnipsExpandTrigger="<c-s>"
+let g:UltiSnipsJumpForwardTrigger="<c-s>"
+let g:UltiSnipsJumpBackwardTrigger="<c-a>"
