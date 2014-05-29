@@ -170,6 +170,11 @@ au filetype python setl smarttab
 " Smart indent fucks up lines starting with #
 au filetype python setl nosmartindent
 
+" Rolepoint specific python file 'building'
+au filetype python setlocal makeprg=nosetests
+au filetype python setlocal efm=%f:%l:\ fail:\ %m,%f:%l:\ error:\ %m
+au filetype python nnoremap <C-CR> :make<CR>
+
 " Coffeescript, Ruby & XML - 2 space indents
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 au filetype ruby setl shiftwidth=2 expandtab
