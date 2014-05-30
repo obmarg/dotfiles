@@ -49,6 +49,7 @@ Bundle 'elixir-lang/vim-elixir'
 Bundle 'tpope/endwise'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
+Bundle 'saltstack/salt-vim'
 
 filetype plugin indent on
 
