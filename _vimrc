@@ -50,6 +50,8 @@ Bundle 'tpope/endwise'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'saltstack/salt-vim'
+Bundle 'tpope/vim-git'
+
 
 filetype plugin indent on
 
@@ -385,3 +387,5 @@ let g:syntastic_python_checkers = ['flake8']
 let g:UltiSnipsExpandTrigger="<c-s>"
 let g:UltiSnipsJumpForwardTrigger="<c-s>"
 let g:UltiSnipsJumpBackwardTrigger="<c-a>"
+
+autocmd FileType gitcommit set spell
