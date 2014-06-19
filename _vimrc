@@ -307,9 +307,11 @@ nnoremap <A-g> <C-]>
 nnoremap <D-Return> :Eval<CR>
 
 " Setup some python mode settings
+let g:pymode_lint = 0
 let g:pymode_lint_write = 0
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
 let g:pymode_lint_ignore = "W391,E201,E202,E225,E126,E123"
+let g:pymode_rope_completion = 0
 " E225 - Whitespace around operators (messes up for should-dsl)
 " E125 - Over-indented continuation line
 " E126 - Closing brace doesn't match indentation of opening brace
