@@ -51,7 +51,7 @@ Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'saltstack/salt-vim'
 Bundle 'tpope/vim-git'
-
+Bundle 'raichoo/haskell-vim'
 
 filetype plugin indent on
 
