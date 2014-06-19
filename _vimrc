@@ -318,8 +318,6 @@ let g:pymode_rope_completion = 0
 
 nnoremap <F5> :GundoToggle<CR>
 
-let g:Powerline_symbols='unicode'
-
 " Vim-clojure-static settings
 let g:clojure_align_multiline_strings=1
 
