@@ -169,6 +169,8 @@ autocmd BufReadPre SConscript set filetype=python
 au filetype python setl softtabstop=4
 au filetype python setl shiftwidth=4
 au filetype python setl smarttab
+" Syntastic highlights 79 char long lines as wrong, so lets limit to 78
+au filetype python setl textwidth=78
 
 " Smart indent fucks up lines starting with #
 au filetype python setl nosmartindent
