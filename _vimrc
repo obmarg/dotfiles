@@ -25,7 +25,6 @@ Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/OmniCppComplete'
 Bundle 'majutsushi/tagbar'
 Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-foreplay'
 Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'kien/rainbow_parentheses.vim'
@@ -52,6 +51,8 @@ Bundle 'honza/vim-snippets'
 Bundle 'saltstack/salt-vim'
 Bundle 'tpope/vim-git'
 Bundle 'raichoo/haskell-vim'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'tpope/vim-fireplace'
 
 filetype plugin indent on
 
