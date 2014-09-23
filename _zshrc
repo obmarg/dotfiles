@@ -141,3 +141,8 @@ function fuck() {
     echo ; echo " (╯°□°）╯︵$(echo "$2"|toilet -f term -F rotate)"; echo
   fi
 }
+
+function portslay () {
+   # portslay:  kill the task active on the specified TCP port
+   kill -9 `lsof -i tcp:$1 | tail -1 | awk '{ print $2;}'`
+}
