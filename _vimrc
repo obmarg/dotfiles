@@ -297,10 +297,10 @@ function! StripWhitespace ()
 endfunction
 noremap <leader>ss :call StripWhitespace ()<CR>
 
-autocmd FileWritePre    * :call StripWhiteSpace()
-autocmd FileAppendPre   * :call StripWhiteSpace()
-autocmd FilterWritePre  * :call StripWhiteSpace()
-autocmd BufWritePre     * :call StripWhiteSpace()
+autocmd FileWritePre    * :call StripWhitespace()
+autocmd FileAppendPre   * :call StripWhitespace()
+autocmd FilterWritePre  * :call StripWhitespace()
+autocmd BufWritePre     * :call StripWhitespace()
 
 " Map tag list to <leader>e
 nmap <leader>e :TlistToggle<CR>
