@@ -336,12 +336,10 @@ let g:rbpt_loadcmd_toggle = 0
 
 " Enable rainbow parens for clojure.
 " May want it for others in future, not sure
-au VimEnter *.clj RainbowParenthesesToggle
-" TODO: This only starts rainbow parens if we open a clj file directly.
-"       Fix it
-au Syntax clojure RainbowParenthesesLoadRound
-au Syntax clojure RainbowParenthesesLoadSquare
-au Syntax clojure RainbowParenthesesLoadBraces
+au FileType clojure RainbowParenthesesActivate
+au FileType clojure RainbowParenthesesLoadRound
+au FileType clojure RainbowParenthesesLoadSquare
+au FileType clojure RainbowParenthesesLoadBraces
 
 " Alternative colors for rainbow parens
 " Thanks to vim-clojure & light table for the colors
