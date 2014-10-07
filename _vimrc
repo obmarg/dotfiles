@@ -53,6 +53,8 @@ Bundle 'tpope/vim-git'
 Bundle 'raichoo/haskell-vim'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'tpope/vim-fireplace'
+Bundle 'raichoo/purescript-vim'
+
 
 filetype plugin indent on
 
