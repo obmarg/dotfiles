@@ -177,6 +177,7 @@ au filetype python setl textwidth=78
 
 " Smart indent fucks up lines starting with #
 au filetype python setl nosmartindent
+au filetype coffee setl nosmartindent
 
 " Rolepoint specific python file 'building'
 au filetype python setlocal makeprg=nosetests
