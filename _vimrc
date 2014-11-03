@@ -238,14 +238,10 @@ map <C-l> <C-w>l
 " Map some buffer navigation keys.
 " <leader>l for list
 " <leader><leader> for toggle
-" <leader>. for next
-" <leader>m for previous
 " <leader>n as shortcut to :b
 " <leader>1... for buffer number
 map <leader>l :ls<CR>
 map <leader><leader> :b #<CR>
-map <leader>. :bn<CR>
-map <leader>m :bp<CR>
 map <leader>n :b
 map <leader>1 :b 1<CR>
 map <leader>2 :b 2<CR>
@@ -256,6 +252,12 @@ map <leader>6 :b 6<CR>
 map <leader>7 :b 7<CR>
 map <leader>8 :b 8<CR>
 map <leader>9 :b 9<CR>
+
+" Map some quickfix list navigation commands
+" <leader>. for next
+" <leader>m for previous
+map <leader>. :cn<CR>
+map <leader>m :cp<CR>
 
 " Clear highlighted searches
 nmap <silent> <Leader>/ :nohlsearch<CR>
