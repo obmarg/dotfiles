@@ -31,14 +31,14 @@ elif [[ $unamestr == 'Darwin' ]]; then
     platform='macos'
 fi
 
-antigen-bundle git 
-antigen-bundle git-flow 
-antigen-bundle github 
-antigen-bundle mercurial 
-antigen-bundle node 
-antigen-bundle npm 
-antigen-bundle pip 
-antigen-bundle python 
+antigen-bundle gitfast
+antigen-bundle git-flow
+antigen-bundle github
+antigen-bundle mercurial
+antigen-bundle node
+antigen-bundle npm
+antigen-bundle pip
+antigen-bundle python
 antigen-bundle virtualenvwrapper
 antigen-bundle lein
 antigen-bundle rsync
