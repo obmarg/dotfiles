@@ -146,3 +146,12 @@ function portslay () {
    # portslay:  kill the task active on the specified TCP port
    kill -9 `lsof -i tcp:$1 | tail -1 | awk '{ print $2;}'`
 }
+
+function gdistremote () {
+    # Adds a remote that can be pushed to.
+    # Idea stolen from https://glyph.twistedmatrix.com/2014/09/actually-distributed.html
+    # but put into this function because i'll never remember the exact commands.
+    # Takes the 2 required args to git remote add
+    git remote add $1 $2
+    git config remote.$1.push '+refs/heads/*:refs/remotes/$(hostname)/*'
+}
