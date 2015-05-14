@@ -1,10 +1,10 @@
 
 # Load custom profiles first
-if [ -e ~/.profile ] ; then 
+if [ -e ~/.profile ] ; then
     source ~/.profile
 fi
 
-if [ -e ~/.localrc ] ; then 
+if [ -e ~/.localrc ] ; then
     source ~/.localrc
 fi
 
@@ -58,7 +58,7 @@ elif [[ $platform == 'macos' ]]; then
     antigen-bundle macports
     antigen-bundle osx
     antigen-bundle brew
-fi 
+fi
 
 antigen-theme norm
 
@@ -134,7 +134,7 @@ function cdr {
 
 # Rolepoint app shortcut.  Seperate commands to allow the virtualenv stuff to
 # work
-alias rpa='cd src && cd rolepoint-app'
+alias rpa='cd src && cd rolepoint-app && workon rolepoint-app'
 
 function fuck() {
   if killall -9 "$2"; then
@@ -155,3 +155,5 @@ function gdistremote () {
     git remote add $1 $2
     git config remote.$1.push '+refs/heads/*:refs/remotes/$(hostname)/*'
 }
+
+alias ipy='ptipython --vi'
