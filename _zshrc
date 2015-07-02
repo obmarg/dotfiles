@@ -102,7 +102,7 @@ alias dua='du -a | sort -n | cut -f 2- | sed "s/\(.*\)/\"\1\"/" | xargs -Ix du -
 if [[ `uname` == "Linux" ]] ; then
     alias loc='find -regextype posix-extended -regex ".*\.(cpp|c|h|hpp|py|coffee|clj|go|hs|erl|ex|exs)$" | xargs -n1 wc -l | cut -f1 -d"." | paste -sd+ - | bc'
 else
-    alias loc='find -E . -regex ".*\.(cpp|c|h|hpp|py|coffee|clj|go|hs|erl|ex|exs)$" | xargs -n1 wc -l | cut -f1 -d"." | paste -sd+ - | bc'
+    alias loc='find -E . -regex ".*\.(cpp|c|h|hpp|py|coffee|clj|go|hs|erl|ex|exs|cljs)$" | xargs -n1 wc -l | cut -f1 -d"." | paste -sd+ - | bc'
 fi
 
 # Nicer default df & free behaviour
