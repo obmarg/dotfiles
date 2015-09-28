@@ -48,6 +48,7 @@ antigen-bundle colored-man
 antigen-bundle vundle
 antigen-bundle coffee
 antigen-bundle vagrant
+antigen bundle $HOME/src/dotfiles/zsh/pyenv
 
 antigen-bundle zsh-users/zsh-completions
 
