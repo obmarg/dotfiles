@@ -31,9 +31,17 @@
      ;; --------------------------------------------------------
      javascript
      themes-megapack
-     python
-     erlang-elixir
+     (python :variables
+             python-test-runner 'pytest)
+     pytest
+     erlang
+     elixir
      osx
+     github
+     version-control
+     (clojure :variables
+              clojure-enable-fancy-symbols t)
+     eyebrowse
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -166,6 +174,8 @@ layers configuration."
   (define-key window-numbering-keymap "\M-9" nil)
   ; Actually allow typing #
   (global-set-key (kbd "M-3") `(lambda () (interactive) (insert "#")))
+
+  (add-hook 'alchemist-mode-hook 'company-mode)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
