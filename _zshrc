@@ -158,3 +158,9 @@ function gdistremote () {
 }
 
 alias ipy='ptipython --vi'
+
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+if [ -s ~/.asdf/asdf.sh ] ; then
+    . ~/.asdf/asdf.sh
+fi
