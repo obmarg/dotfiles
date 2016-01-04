@@ -52,6 +52,7 @@ antigen bundle $HOME/src/dotfiles/zsh/pyenv
 antigen bundle $HOME/src/dotfiles/zsh/asdf
 
 antigen-bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 if [[ $platform == 'linux' ]]; then
     antigen-bundle debian
