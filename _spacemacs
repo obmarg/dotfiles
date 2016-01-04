@@ -189,7 +189,11 @@ layers configuration."
 
   ; Remove that annoying % behaviour from python-mode.
   (remove-hook `python-mode-hook `turn-on-evil-matchit-mode)
+
+  (setq pytest-cmd-flags "-x")
 )
+
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
