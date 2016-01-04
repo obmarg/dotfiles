@@ -32,10 +32,10 @@
 
      ;; Various languages
      javascript
-     rust
+     ;; Disabling rust because it's causing me problems and I don't need it.
+     ;; rust
      (python :variables
              python-test-runner 'pytest)
-     pytest
      erlang
      elixir
      scala
