@@ -48,6 +48,7 @@
      github
      version-control
      eyebrowse
+     spacemacs-layouts
 
      ; Plugins what I made
      elixir-dogma
