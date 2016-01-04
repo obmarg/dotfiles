@@ -1,17 +1,23 @@
 if [ ! -d ~/.asdf ] ; then
-    echo "ASDF is not installed"
-    read -q "REPLY?Do you wish to install? [y/n] "
-    echo
-    if [[ $REPLY == "y" ]] ; then
-        git clone https://github.com/HashNuke/asdf.git ~/.asdf
+    if [ ! -z $PS1 ] ; then
+        echo "ASDF is not installed"
+        read -q "REPLY?Do you wish to install? [y/n] "
+        echo
+        if [[ $REPLY == "y" ]] ; then
+            git clone https://github.com/HashNuke/asdf.git ~/.asdf
+        fi
+        echo
     fi
-    echo
 fi
 
 if [ -s ~/.asdf/asdf.sh ] ; then
     . ~/.asdf/asdf.sh
 
     ASDF_PLUGINS=`asdf plugin-list`
+
+    if [ -z $PS1 ] ; then
+        return 0
+    fi
 
     if [[ ! $ASDF_PLUGINS == *"elixir"* ]] ; then
         echo "ASDF elixir plugin is not installed"
