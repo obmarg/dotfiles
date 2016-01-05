@@ -35,7 +35,8 @@
      ;; Disabling rust because it's causing me problems and I don't need it.
      ;; rust
      (python :variables
-             python-test-runner 'pytest)
+             python-test-runner 'pytest
+             python-auto-set-local-pyenv-version 'on-project-switch)
      erlang
      elixir
      scala
@@ -165,7 +166,7 @@ before layers configuration."
   ;; User initialization goes here
   )
 
-(defun dotspacemacs/config ()
+(defun dotspacemacs/user-config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
@@ -190,6 +191,9 @@ layers configuration."
   ; Remove that annoying % behaviour from python-mode.
   (remove-hook `python-mode-hook `turn-on-evil-matchit-mode)
 
+  ; Load virtual env settings from dir-locals.el.
+  (add-hook `python-mode-hook 'pyvenv-tracking-mode)
+
   (setq pytest-cmd-flags "-x")
 )
 
@@ -208,7 +212,9 @@ layers configuration."
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
  '(paradox-github-token t)
- '(ring-bell-function (quote ignore) t))
+ '(ring-bell-function (quote ignore) t)
+ '(safe-local-variable-values (quote ((pyvenv-workon . "connect"))))
+ '(send-mail-function (quote mailclient-send-it)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
