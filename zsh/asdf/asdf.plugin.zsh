@@ -48,4 +48,14 @@ if [ -s ~/.asdf/asdf.sh ] ; then
         fi
         echo
     fi
+
+    if [[ ! $ASDF_PLUGINS == *"elm"* ]] ; then
+        echo "ASDF elm plugin is not installed"
+        read -q "REPLY?Do you wish to install? [y/n] "
+        echo
+        if [[ $REPLY == "y" ]] ; then
+            asdf plugin-add elm https://github.com/obmarg/asdf-elm.git
+        fi
+        echo
+    fi
 fi
