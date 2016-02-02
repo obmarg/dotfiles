@@ -8,6 +8,8 @@ if [ -e ~/.localrc ] ; then
     source ~/.localrc
 fi
 
+setopt histignorespace
+
 # Load antigen & oh-my-zsh
 source "$HOME/.antigen/antigen.zsh"
 antigen-use oh-my-zsh
