@@ -42,6 +42,7 @@
      scala
      (clojure :variables
               clojure-enable-fancy-symbols t)
+     elm
 
      ;; Various Utilities
      themes-megapack
