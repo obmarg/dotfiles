@@ -196,6 +196,8 @@ layers configuration."
   (add-hook `python-mode-hook 'pyvenv-tracking-mode)
 
   (setq pytest-cmd-flags "-x")
+
+  (setq create-lockfiles nil)
 )
 
 
