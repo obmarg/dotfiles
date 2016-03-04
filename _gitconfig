@@ -25,3 +25,5 @@
     fsckobjects = true
 [receive]
     fsckObjects = true
+[rerere]
+	enabled = true
