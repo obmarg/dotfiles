@@ -43,6 +43,7 @@
      (clojure :variables
               clojure-enable-fancy-symbols t)
      elm
+     nixos
 
      ;; Various Utilities
      themes-megapack
