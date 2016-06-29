@@ -54,6 +54,7 @@
 
      ; Plugins what I made
      elixir-dogma
+     toggle-test
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -194,6 +195,15 @@ layers configuration."
   (setq pytest-cmd-flags "-x")
 
   (setq create-lockfiles nil)
+
+  (add-to-list 'tgt-projects '((:root-dir "~/src/connect")
+                               (:src-dirs "connect")
+                               (:test-dirs "test")
+                               (:test-prefixes "test_")))
+  (add-to-list 'tgt-projects '((:root-dir "~/src/chunnel")
+                               (:src-dirs "chunnel")
+                               (:test-dirs "test")
+                               (:test-prefixes "test_")))
 )
 
 
