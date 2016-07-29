@@ -196,7 +196,9 @@ layers configuration."
   ; Load virtual env settings from dir-locals.el.
   (add-hook `python-mode-hook 'pyvenv-tracking-mode)
 
-  (setq pytest-cmd-flags "-x")
+  ; (add-hook 'elixir-mode-hook 'flycheck-mode)
+
+  (setq pytest-cmd-flags "-x -p no:sugar")
 
   (setq create-lockfiles nil)
 
@@ -228,7 +230,8 @@ layers configuration."
  '(ring-bell-function (quote ignore) t)
  '(safe-local-variable-values
    (quote
-    ((py-yapf-options "--in-place" "--style" "/Users/graeme/src/connect/.style.yapf")
+    ((flycheck-checker . hjson-python)
+     (py-yapf-options "--in-place" "--style" "/Users/graeme/src/connect/.style.yapf")
      (pyvenv-workon . "connect"))))
  '(send-mail-function (quote mailclient-send-it)))
 (custom-set-faces
