@@ -164,3 +164,9 @@ function gdistremote () {
 alias ipy='ptipython --vi'
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Switch project & switch thirdparty project aliases
+alias swp='cd ~/src/$(ls ~/src | fzf)'
+alias swtp='cd ~/src/thirdparty/$(ls ~/src/thirdparty | fzf)'

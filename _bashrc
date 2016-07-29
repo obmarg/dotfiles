@@ -108,3 +108,5 @@ stty -ixon
 if [ -e ~/.localrc ] ; then 
     source ~/.localrc
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
