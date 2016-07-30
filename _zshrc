@@ -14,10 +14,6 @@ setopt histignorespace
 source "$HOME/.antigen/antigen.zsh"
 antigen-use oh-my-zsh
 
-# Load oh-my-zsh plugins
-antigen-bundle git
-antigen-bundle git
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -46,7 +42,7 @@ antigen-bundle lein
 antigen-bundle rsync
 antigen-bundle cp
 antigen-bundle bower
-antigen-bundle colored-man
+antigen-bundle colored-man-pages
 antigen-bundle vundle
 antigen-bundle coffee
 antigen-bundle vagrant
@@ -168,5 +164,5 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Switch project & switch thirdparty project aliases
-alias swp='cd ~/src/$(ls ~/src | fzf)'
-alias swtp='cd ~/src/thirdparty/$(ls ~/src/thirdparty | fzf)'
+alias sw='cd ~/src/$(ls ~/src | fzf)'
+alias swt='cd ~/src/thirdparty/$(ls ~/src/thirdparty | fzf)'
