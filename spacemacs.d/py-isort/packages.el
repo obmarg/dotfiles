@@ -1,5 +1,5 @@
 (setq py-isort-packages
-      '((py-isort :location local)))
+      '(py-isort))
 
 (defun py-isort/init-py-isort ()
   (use-package py-isort
