@@ -42,9 +42,12 @@
      scala
      (clojure :variables
               clojure-enable-fancy-symbols t)
-     elm
+     (elm :variables
+          elm-format-on-save t)
      nixos
      yaml
+     ansible
+     haskell
 
      ;; Various Utilities
      themes-megapack
