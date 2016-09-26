@@ -97,8 +97,10 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(twilight-anti-bright
-                         sanityinc-tomorrow-day)
+   dotspacemacs-themes '(;twilight-anti-bright
+                         ;sanityinc-tomorrow-day
+                         spacemacs-dark
+                         spacemacs-light)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -213,6 +215,8 @@ layers configuration."
                                (:src-dirs "chunnel")
                                (:test-dirs "test")
                                (:test-prefixes "test_")))
+
+  (setq spacemacs-theme-comment-bg nil)
 )
 
 
@@ -229,6 +233,12 @@ layers configuration."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(ansi-term-color-vector
+   [unspecified "#14191f" "#d15120" "#81af34" "#deae3e" "#7e9fc9" "#a878b5" "#7e9fc9" "#dcdddd"])
+ '(custom-safe-themes
+   (quote
+    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
+ '(fci-rule-character-color "#192028")
  '(paradox-github-token t)
  '(ring-bell-function (quote ignore) t)
  '(safe-local-variable-values
