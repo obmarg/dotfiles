@@ -36,7 +36,8 @@
      ;; rust
      (python :variables
              python-test-runner 'pytest
-             python-auto-set-local-pyenv-version 'on-project-switch)
+             python-auto-set-local-pyenv-version 'on-project-switch
+             python-sort-imports-on-save t)
      erlang
      elixir
      scala
@@ -61,7 +62,6 @@
      elixir-dogma
      hjson
      toggle-test
-     py-isort
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
