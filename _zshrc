@@ -166,3 +166,7 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # Switch project & switch thirdparty project aliases
 alias sw='cd ~/src/$(ls ~/src | fzf)'
 alias swt='cd ~/src/thirdparty/$(ls ~/src/thirdparty | fzf)'
+
+[ -d ~/.local/bin ] && export PATH=$PATH:~/.local/bin
+
+alias gsl='git shortlog --no-merges'
