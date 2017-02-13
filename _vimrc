@@ -3,59 +3,56 @@ set nocompatible
 " Disable filetype for vundle
 filetype off
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
-Bundle 'kien/ctrlp.vim'
-Bundle 'Bogdanp/pyrepl.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'juvenn/mustache.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'groenewege/vim-less'
-Bundle 'kana/vim-smartinput'
-Bundle 'sjl/gundo.vim'
-Bundle 'klen/python-mode'
-Bundle 'tpope/vim-cucumber'
-Bundle 'AndrewRadev/linediff.vim'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-markdown'
-Bundle 'vim-scripts/OmniCppComplete'
-Bundle 'majutsushi/tagbar'
-Bundle 'guns/vim-clojure-static'
-Bundle 'nelstrom/vim-visual-star-search'
-Bundle 'editorconfig/editorconfig-vim'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'tpope/vim-repeat'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-obsession'
-Bundle 'scrooloose/syntastic'
-Bundle 'nono/vim-handlebars'
-Bundle 'wavded/vim-stylus'
-Bundle 'airblade/vim-gitgutter'
-"Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'tpope/vim-dispatch'
-Bundle 'elzr/vim-json'
-Bundle 'rking/ag.vim'
-Bundle 'rodjek/vim-puppet'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-eunuch'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'tpope/endwise'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'saltstack/salt-vim'
-Bundle 'tpope/vim-git'
-Bundle 'raichoo/haskell-vim'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'tpope/vim-fireplace'
-Bundle 'raichoo/purescript-vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Bogdanp/pyrepl.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'juvenn/mustache.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'groenewege/vim-less'
+Plugin 'kana/vim-smartinput'
+Plugin 'sjl/gundo.vim'
+Plugin 'klen/python-mode'
+Plugin 'tpope/vim-cucumber'
+Plugin 'AndrewRadev/linediff.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-markdown'
+Plugin 'vim-scripts/OmniCppComplete'
+Plugin 'majutsushi/tagbar'
+Plugin 'guns/vim-clojure-static'
+Plugin 'nelstrom/vim-visual-star-search'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'tpope/vim-repeat'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-obsession'
+Plugin 'scrooloose/syntastic'
+Plugin 'nono/vim-handlebars'
+Plugin 'wavded/vim-stylus'
+Plugin 'airblade/vim-gitgutter'
+"Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tpope/vim-dispatch'
+Plugin 'elzr/vim-json'
+Plugin 'rking/ag.vim'
+Plugin 'rodjek/vim-puppet'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-eunuch'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'honza/vim-snippets'
+Plugin 'saltstack/salt-vim'
+Plugin 'tpope/vim-git'
+Plugin 'raichoo/haskell-vim'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'tpope/vim-fireplace'
+Plugin 'raichoo/purescript-vim'
 
-
+call vundle#end()
 filetype plugin indent on
 
 set autoindent
@@ -199,9 +196,6 @@ au filetype stylus setl noexpandtab
 
 " Use mustache formatting for ractive files
 autocmd BufRead,BufNewFile *.rac setl filetype=mustache
-
-call pathogen#infect()
-call pathogen#helptags()
 
 " Load matchit plugin
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
