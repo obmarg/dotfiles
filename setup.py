@@ -56,6 +56,8 @@ class Linux(Common):
             '_zshrc': os.path.join( '~', '.zshrc' ),
             '_tmux.conf': os.path.join( '~', '.tmux.conf' ),
             '_gitconfig': os.path.join( '~', '.gitconfig' ),
+            '_spacemacs': os.path.join( '~', '.spacemacs' ),
+            '_proton': os.path.join( '~', '.proton' ),
             }
 
 if __name__ == "__main__":
