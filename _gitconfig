@@ -8,7 +8,7 @@
 [status]
     relativePaths = false
 [core]
-	editor = vim
+	editor = nvim
 [alias]
     d = diff
     dc = diff --cached
