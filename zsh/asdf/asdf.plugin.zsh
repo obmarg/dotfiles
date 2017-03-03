@@ -39,12 +39,12 @@ if [ -s ~/.asdf/asdf.sh ] ; then
         echo
     fi
 
-    if [[ ! $ASDF_PLUGINS == *"node"* ]] ; then
-        echo "ASDF node plugin is not installed"
+    if [[ ! $ASDF_PLUGINS == *"nodejs"* ]] ; then
+        echo "ASDF nodejs plugin is not installed"
         read -q "REPLY?Do you wish to install? [y/n] "
         echo
         if [[ $REPLY == "y" ]] ; then
-            asdf plugin-add node https://github.com/HashNuke/asdf-nodejs.git
+            asdf plugin-add nodejs https://github.com/HashNuke/asdf-nodejs.git
         fi
         echo
     fi
