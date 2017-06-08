@@ -59,6 +59,7 @@
   :additional-packages
   [
     ;; :pigments
+    html-to-elm
   ]
 
   ;; Packages that you want to disable.
