@@ -49,6 +49,7 @@
      yaml
      ansible
      haskell
+     purescript
 
      ;; Various Utilities
      themes-megapack
