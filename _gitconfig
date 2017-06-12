@@ -27,3 +27,7 @@
     fsckObjects = true
 [rerere]
 	enabled = true
+[github]
+	user = obmarg
+[url "git@github.com:"]
+    insteadOf = gh:
