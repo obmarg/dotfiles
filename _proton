@@ -58,6 +58,7 @@
   ;; Will get uninstalled so choose wisely!
   :additional-packages
   [
+    html-to-elm
     ;; :pigments
     html-to-elm
   ]
@@ -92,11 +93,16 @@
     ;; prefer classic vim mode over vim-mode-plus? Change this to :vim-mode
     ["proton.core.inputProvider" :vim-mode-plus]
 
-    ["theme-switch.profiles": [
+    ["theme-switch.profiles" [
         "one-dark-ui one-dark-syntax"
         "one-light-ui one-light-syntax"
       ]
     ]
+
+    ; Hide dotfiles in tree view.
+    ["tree-view.hideIgnoredNames", true]
+    ["tree-view.hideVcsIgnoredNames", true]
+    ["tree-view.hideVcsIgnoredFiles", true]
 
     ; Elm Config
     ["elmjutsu.autocompleteEnabled" true]
