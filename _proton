@@ -58,9 +58,9 @@
   ;; Will get uninstalled so choose wisely!
   :additional-packages
   [
-    html-to-elm
     ;; :pigments
     html-to-elm
+    change-case
   ]
 
   ;; Packages that you want to disable.
@@ -85,6 +85,9 @@
     ;; here are some more popular theme ideas for you to pick from:
     ;; ["core.themes" ["atom-material-ui" "atom-material-syntax"]]
     ["core.themes" ["one-dark-ui" "one-dark-syntax"]]
+
+    ; Disable some keybindings
+    ["core.packagesWithKeymapsDisabled" ["change-case"]]
 
     ;; proton configuration
     ["proton.core.showTabBar" true]
@@ -120,7 +123,14 @@
   ;; :keybindings {:z {:category "foo-category"
   ;;                   :y {:title "execute hello"
   ;;                       :action "hello"}}}
-  :keybindings {}
+  :keybindings {:c
+                  {:category "change case"
+                   :c {:title "change to camel"
+                       :action "change-case:camel"}
+                   :s {:title "change to snake"
+                       :action "change-case:snake"}
+                   :p {:title "change to pascal"
+                       :action "change-case:pascal"}}}
 
   ;; Want some custom behavior inside a certain window?
   ;; Add your own nifty things here!
