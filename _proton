@@ -115,6 +115,9 @@
     ["elmjutsu.typeAwareAutocompleteEnabled" true]
     ["elmjutsu.autocompleteSnippetsEnabled" true]
     ["language-elm.autocompleteEnabled" false]
+
+    ; Use prettier on save in javascript
+    ["prettier-atom.formatOnSaveOptions.enabled" true]
   ]
 
   ;; Don't like a keybinding or want to add something yourself? Do it here
