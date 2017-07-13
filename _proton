@@ -36,9 +36,10 @@
     ;; :lang/latex
     ;; :lang/markdown
     ;; :lang/rust
-    ;; :lang/javascript
+    :lang/javascript
     :lang/elixir
     :lang/elm
+    ;; :lang/haskell
 
     ;; -----------------------------------
     ;; Frameworks
@@ -61,6 +62,7 @@
     ;; :pigments
     html-to-elm
     change-case
+    prettier-atom
   ]
 
   ;; Packages that you want to disable.
