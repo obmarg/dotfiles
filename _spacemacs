@@ -31,6 +31,8 @@
      ;; My Plugins!
      ;; --------------------------------------------------------
 
+     ivy
+
      ;; Various languages
      javascript
      ;; Disabling rust because it's causing me problems and I don't need it.
