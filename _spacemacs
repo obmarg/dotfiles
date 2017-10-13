@@ -40,6 +40,7 @@
      (python :variables
              python-test-runner 'pytest
              python-auto-set-local-pyenv-version 'on-project-switch
+             python-auto-set-local-pyvenv-virtualenv 'on-project-switch
              python-sort-imports-on-save t)
      erlang
      elixir
