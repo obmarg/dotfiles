@@ -31,7 +31,12 @@
      ;; My Plugins!
      ;; --------------------------------------------------------
 
-     ivy
+     ;; Look into ivy later.  Still seems to have a few issues.
+     ;; Mostly just weird search behaviour:
+     ;; seem to need to escape things at odd times, sometimes escape chars
+     ;; break shit, sometimes it just looks like it's doing nothing.  It's super
+     ;; strange and annoying.
+     ;; ivy
 
      ;; Various languages
      javascript
@@ -41,7 +46,8 @@
              python-test-runner 'pytest
              python-auto-set-local-pyenv-version 'on-project-switch
              python-auto-set-local-pyvenv-virtualenv 'on-project-switch
-             python-sort-imports-on-save t)
+             python-sort-imports-on-save t
+             python-enable-yapf-format-on-save t)
      erlang
      elixir
      scala
@@ -68,7 +74,6 @@
      spacemacs-layouts
 
      ; Plugins what I made
-     elixir-dogma
      hjson
      toggle-test
      git-conflict
@@ -227,7 +232,15 @@ layers configuration."
                                (:test-dirs "test")
                                (:test-prefixes "test_")))
 
+  ; Disable comment highlighting in spacemacs theme
   (setq spacemacs-theme-comment-bg nil)
+
+  ; This setting is needed for macos
+  (when (string= system-type "darwin")
+    (setq dired-use-ls-dired nil))
+
+  ; C-c C-e from wgrep should save buffers it changes
+  (setq wgrep-auto-save-buffer t)
 )
 
 
