@@ -223,6 +223,8 @@ layers configuration."
 
   (setq create-lockfiles nil)
 
+  (add-hook 'before-save-hook 'whitespace-cleanup)
+
   (add-to-list 'tgt-projects '((:root-dir "~/src/connect")
                                (:src-dirs "connect")
                                (:test-dirs "test")
