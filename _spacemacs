@@ -66,6 +66,7 @@
      docker
 
      ;; Various Utilities
+     theming
      themes-megapack
      osx
      github
@@ -115,14 +116,17 @@ before layers configuration."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(;twilight-anti-bright
                          ;sanityinc-tomorrow-day
-                         spacemacs-dark
-                         spacemacs-light)
+                         ;spacemacs-dark
+                         ;spacemacs-light
+                         darkokai
+                         material-light
+                         )
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   dotspacemacs-default-font '("Dank Mono"
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -187,12 +191,36 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
+  (if (window-system) (set-frame-size (selected-frame) 130 47))
+  )
+
+(defun dotspacemacs/user-init ()
+  "Initialization function for user code.
+It is called immediately after `dotspacemacs/init', before layer configuration
+executes.
+ This function is mostly useful for variables that need to be set
+before packages are loaded. If you are unsure, you should try in setting them in
+`dotspacemacs/user-config' first."
+
+  ; Make comments italic
+  (setq theming-modifications '(
+                                (darkokai
+                                 (font-lock-comment-face :slant italic)
+                                 (font-lock-doc-face :slant italic))
+                                (material-light
+                                 (font-lock-comment-face :slant italic)
+                                 (font-lock-doc-face :slant italic)
+                                 )))
+
   )
 
 (defun dotspacemacs/user-config ()
-  "Configuration function.
- This function is called at the very end of Spacemacs initialization after
-layers configuration."
+  "Configuration function for user code.
+This function is called at the very end of Spacemacs initialization after
+layers configuration.
+This is the place where most of your configurations should be done. Unless it is
+explicitly specified that a variable should be set before a package is loaded,
+you should place your code here."
   (setq magit-repo-dirs '("~/src/"))
 
   ; Disable Alt-[0-9], since my keyboard kinda needs Alt-3 for the hash key.
