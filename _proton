@@ -80,7 +80,7 @@
   :configuration
   [
     ;; appearance
-    ["editor.fontFamily" "Hack"]
+    ["editor.fontFamily" "Dank Mono"]
 
     ;; the current default theme
     ;; ["core.themes" ["nucleus-dark-ui" "atom-dark-fusion-syntax"]]
