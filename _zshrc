@@ -34,7 +34,6 @@ antibody bundle robbyrussell/oh-my-zsh folder:plugins/node
 antibody bundle robbyrussell/oh-my-zsh folder:plugins/npm
 antibody bundle robbyrussell/oh-my-zsh folder:plugins/pip
 antibody bundle robbyrussell/oh-my-zsh folder:plugins/python
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/virtualenvwrapper
 antibody bundle robbyrussell/oh-my-zsh folder:plugins/lein
 antibody bundle robbyrussell/oh-my-zsh folder:plugins/rsync
 antibody bundle robbyrussell/oh-my-zsh folder:plugins/cp
