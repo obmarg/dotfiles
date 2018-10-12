@@ -1,0 +1,8 @@
+{
+    "editor.fontFamily": "Dank Mono, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 16,
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Yoncé",
+    "workbench.iconTheme": "file-icons"
+}
