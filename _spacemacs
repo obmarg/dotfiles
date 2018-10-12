@@ -83,12 +83,27 @@
      ;; Other Local Plugins
      spacemacs-prettier
      )
+   ;; List of additional packages that will be installed without being
+   ;; wrapped in a layer. If you need some configuration for these
+   ;; packages, then consider creating a layer. You can also put the
+   ;; configuration in `dotspacemacs/user-config'.
+   dotspacemacs-additional-packages '(flycheck-inline)
+   ;; A list of packages that cannot be updated.
+   dotspacemacs-frozen-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'
-   dotspacemacs-delete-orphan-packages t))
+   dotspacemacs-delete-orphan-packages t
+   ;; Defines the behaviour of Spacemacs when installing packages.
+   ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
+   ;; `used-only' installs only explicitly used packages and uninstall any
+   ;; unused packages as well as their unused dependencies.
+   ;; `used-but-keep-unused' installs only the used packages but won't uninstall
+   ;; them if they become unused. `all' installs *all* packages supported by
+   ;; Spacemacs and never uninstall them. (default is `used-only')
+   dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -284,6 +299,19 @@ you should place your code here."
 
   ; Prettier on save. when in JS.
   (add-hook 'js2-mode-hook 'prettier-js-mode)
+
+  ; Use ripgrep
+  (custom-set-variables
+   '(helm-ag-base-command "rg --no-heading"))
+
+  ; Format elixir files on save
+  (add-hook 'elixir-mode-hook
+            (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
+
+  (flycheck-inline-mode)
+  (setq flycheck-display-errors-delay 0.3)
+
+  (setq rust-format-on-save t)
 )
 
 
