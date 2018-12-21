@@ -4,5 +4,9 @@
     "editor.fontSize": 16,
     "editor.minimap.enabled": false,
     "workbench.colorTheme": "Yoncé",
-    "workbench.iconTheme": "file-icons"
+    "workbench.iconTheme": "file-icons",
+    "editor.formatOnSave": true,
+    "C_Cpp.clang_format_fallbackStyle": "none",
+    "window.zoomLevel": 0,
+    "terminal.integrated.rendererType": "dom"
 }
