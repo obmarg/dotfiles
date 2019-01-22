@@ -304,9 +304,15 @@ you should place your code here."
   (custom-set-variables
    '(helm-ag-base-command "rg --no-heading"))
 
-  ; Format elixir files on save
+  ; Format elixir files on save using .formatter.exs
   (add-hook 'elixir-mode-hook
             (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
+  (add-hook 'elixir-format-hook (lambda ()
+                                  (if (projectile-project-p)
+                                      (setq elixir-format-arguments
+                                              (list "--dot-formatter"
+                                                  (concat (locate-dominating-file buffer-file-name ".formatter.exs") ".formatter.exs")))
+                                  (setq elixir-format-arguments nil))))
 
   (flycheck-inline-mode)
   (setq flycheck-display-errors-delay 0.3)
