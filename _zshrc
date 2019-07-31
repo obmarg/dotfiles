@@ -26,22 +26,10 @@ elif [[ $unamestr == 'Darwin' ]]; then
 fi
 
 antibody bundle robbyrussell/oh-my-zsh
+antibody bundle robbyrussell/oh-my-zsh folder:plugins/git
 antibody bundle robbyrussell/oh-my-zsh folder:plugins/gitfast
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/git-flow
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/github
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/mercurial
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/node
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/npm
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/pip
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/python
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/lein
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/rsync
 antibody bundle robbyrussell/oh-my-zsh folder:plugins/cp
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/bower
 antibody bundle robbyrussell/oh-my-zsh folder:plugins/colored-man-pages
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/vundle
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/coffee
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/vagrant
 antibody bundle $HOME/src/dotfiles/zsh/pyenv
 antibody bundle $HOME/src/dotfiles/zsh/asdf
 
@@ -51,15 +39,9 @@ antibody bundle zsh-users/zsh-syntax-highlighting
 if [[ $platform == 'linux' ]]; then
     antibody bundle robbyrussell/oh-my-zsh folder:debian
     antibody bundle robbyrussell/oh-my-zsh folder:ssh-agent
-elif [[ $platform == 'macos' ]]; then
-    antibody bundle robbyrussell/oh-my-zsh folder:macports
-    antibody bundle robbyrussell/oh-my-zsh folder:osx
-    antibody bundle robbyrussell/oh-my-zsh folder:brew
 fi
 
 antibody bundle $HOME/src/dotfiles/zsh/norm-theme/
-
-vundle-init
 
 PROMPT='%{$fg[yellow]%}λ %{$fg[green]%}%m %{$fg[yellow]%}λ %{$fg[green]%}%c$(git_prompt_info)%{$fg[yellow]%} → %{$reset_color%}'
 
