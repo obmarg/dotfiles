@@ -9,6 +9,7 @@
     relativePaths = false
 [core]
 	editor = nvim
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
     d = diff
     dc = diff --cached
@@ -31,3 +32,5 @@
 	user = obmarg
 [url "git@github.com:"]
     insteadOf = gh:
+[commit]
+	verbose = true
