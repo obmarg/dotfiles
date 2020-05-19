@@ -50,12 +50,20 @@ ZSH_THEME_GIT_PROMPT_SUFFIX=""
 
 # Globbing tends to brake some rake functionality, so disable it
 alias rake="noglob rake"
-# Update some git aliases to personal versions
+
+# Some git aliases
+alias ga='git add'
 alias gst='git st'
 alias gd='git diff'
+alias g='git'
+alias gco='git checkout'
+alias gl='git pull'
+alias gp='git push'
+alias gc='git commit'
+alias gb='git branch'
 
 # Publish current branch
-alias gpub='git push -u origin $(current_branch)'
+alias gpub='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 
 # Pull & Rebase
 alias glr='git pull --rebase'
@@ -63,13 +71,6 @@ alias glr='git pull --rebase'
 # Edit & add conflict files
 alias gec='git status -sb | grep ^UU | cut -d" " -f 2 | xargs mvim'
 alias gac='git status -sb | grep ^UU | cut -d" " -f 2 | xargs git add'
-
-# Some git flow aliases
-alias gf="git flow"
-alias gff="git flow feature"
-alias gffs="git flow feature start"
-alias gfff="git flow feature finish"
-alias gffc="git flow feature checkout"
 
 # Ordered du alias
 alias duc='du -s ./* | sort -n | cut -f 2- | sed "s/\(.*\)/\"\1\"/" | xargs -Ix du -sh x'
@@ -138,6 +139,7 @@ alias ipy='ptipython --vi'
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.sk.zsh ] && source ~/.sk.zsh
 
 # Switch project & switch thirdparty project aliases
 alias sw='cd ~/src/$(ls ~/src | fzf)'
@@ -146,3 +148,14 @@ alias swt='cd ~/src/thirdparty/$(ls ~/src/thirdparty | fzf)'
 [ -d ~/.local/bin ] && export PATH=$PATH:~/.local/bin
 
 alias gsl='git shortlog --no-merges'
+
+# Kubernetes aliases
+alias k='kubectl'
+alias kpl='kubectl pods list'
+alias kpd='kubectl pods describe'
+alias kswitch='kubectl config use-context'
+
+source <(kubectl completion zsh)
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/graeme/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
