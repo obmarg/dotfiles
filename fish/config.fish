@@ -13,3 +13,7 @@ fish_vi_key_bindings
 if type -q starship
     starship init fish | source
 end
+
+if test -d ~/.brew/Cellar/asdf
+    source (find ~/.brew/Cellar/asdf/*/asdf.fish)
+end
