@@ -1,3 +1,5 @@
+fenv source ~/.profile
+
 # Fix the gst abbr
 abbr --erase gst
 abbr -a gst git st
