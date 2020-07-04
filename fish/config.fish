@@ -6,4 +6,8 @@ if type -q sk
     skim_key_bindings
 end
 
-starship init fish | source
+fish_vi_key_bindings
+
+if type -q starship
+    starship init fish | source
+end
