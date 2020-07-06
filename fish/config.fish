@@ -5,7 +5,7 @@ abbr --erase gst
 abbr -a gst git st
 
 alias gpub='git push -u origin (git rev-parse --abbrev-ref HEAD)'
-alias cdr='cd (git rev-parse --show-toplevel 2> /dev/null)
+alias cdr='cd (git rev-parse --show-toplevel 2> /dev/null)'
 
 if type -q sk
     skim_key_bindings
