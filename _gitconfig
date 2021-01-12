@@ -35,3 +35,7 @@
     insteadOf = gh:
 [commit]
 	verbose = true
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
