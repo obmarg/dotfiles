@@ -13,15 +13,33 @@ end
 
 fish_vi_key_bindings
 
-if command -v pazi >/dev/null
-   status --is-interactive; and pazi init fish | source
-   status --is-interactive; and alias zf='z --pipe="sk"'
-end
 
 if type -q starship
     status --is-interactive; and starship init fish | source
 end
 
+if type -q nvim
+    alias vim='nvim'
+    alias vi='nvim'
+end
+
+if type -q zoxide
+    zoxide init fish | source
+    alias cd='z'
+    set -x _ZO_FZF_OPTS "--no-sort" "--keep-right" "--height=40%" "--info=inline" "--layout=reverse" "--exit-0" "--select-1" "--bind=ctrl-z:ignore" "--preview='ls {2..}'"
+end
+
+if type -q exa
+    alias ls='exa'
+end
+
 if test -d ~/.brew/Cellar/asdf
     source (find ~/.brew/Cellar/asdf/*/asdf.fish)
 end
+
+set -x HUSKY 0
+
+alias ffs='pushd (git rev-parse --show-toplevel 2>/dev/null) && yarn && yarn build:packages && popd'
+
+# Created by `pipx` on 2021-11-24 16:37:56
+set PATH $PATH /Users/graeme/.local/bin
