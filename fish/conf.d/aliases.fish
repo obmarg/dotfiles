@@ -4,5 +4,5 @@ if type -q nvim
 end
 
 if type -q git-branchless
-	alias git git-branchless wrap --
+	alias git "git-branchless wrap --"
 end
