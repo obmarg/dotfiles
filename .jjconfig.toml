@@ -1,0 +1,34 @@
+[user]
+name = "Graeme Coupar"
+email = "graeme@turbofish.tech"
+
+[ui]
+#diff-editor = ["ksdiff", "--merge", "$left", "$right"]
+#merge-editor = ["ksdiff", "--merge", "--output", "$output", "--base", "$base", "$left", "$right"]
+diff.format = "git"
+#pager = ["sh", "-c", "diff-so-fancy | less -RFX"]
+pager = "delta"
+
+[template-aliases]
+# Username part of the email address
+'format_short_signature(signature)' = 'signature.username()'
+'format_timestamp(timestamp)' = 'timestamp.ago()'
+'format_short_id(id)' = 'id.shortest(6)'
+
+[colors]
+# Don't highlight the shortest prefix
+"prefix" = "bright black"
+"rest" = "bright black"
+
+# Also don't highlight divergent stuff (the red ?? is fine with me)
+"divergent prefix" = "bright black"
+"divergent rest" = "bright black"
+
+"branches" = "yellow"
+"git_refs" = "yellow"
+"git_head" = "yellow"
+
+"timestamp" = "blue"
+"author" = "green"
+
+"working_copy" = { bold = true }
