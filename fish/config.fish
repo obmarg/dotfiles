@@ -18,9 +18,14 @@ if type -q starship
     status --is-interactive; and starship init fish | source
 end
 
+if type -q jj
+    status --is-interactive; and jj debug completion --fish | source
+end
+
 if type -q nvim
     alias vim='nvim'
     alias vi='nvim'
+    set -x EDITOR nvim
 end
 
 if type -q zoxide
@@ -43,3 +48,16 @@ alias ffs='pushd (git rev-parse --show-toplevel 2>/dev/null) && yarn && yarn bui
 
 # Created by `pipx` on 2021-11-24 16:37:56
 set PATH $PATH /Users/graeme/.local/bin
+
+# pnpm
+set -gx PNPM_HOME "/Users/graeme/Library/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end
+
+if type -q atuin
+    status --is-interactive; and atuin init fish | source
+end
+
+if type -q direnv
+    direnv hook fish | source
+end
