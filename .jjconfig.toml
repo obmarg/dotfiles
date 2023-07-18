@@ -5,9 +5,13 @@ email = "graeme@turbofish.tech"
 [ui]
 #diff-editor = ["ksdiff", "--merge", "$left", "$right"]
 #merge-editor = ["ksdiff", "--merge", "--output", "$output", "--base", "$base", "$left", "$right"]
+diff-editor = ["scm-diff-editor", "--dir-diff", "$left", "$right"]
 diff.format = "git"
 #pager = ["sh", "-c", "diff-so-fancy | less -RFX"]
 pager = "delta"
+
+[aliases]
+l = ['log', '--no-pager', '--reversed']
 
 [template-aliases]
 # Username part of the email address
@@ -29,6 +33,6 @@ pager = "delta"
 "git_head" = "yellow"
 
 "timestamp" = "blue"
-"author" = "green"
+"username" = "green"
 
 "working_copy" = { bold = true }
