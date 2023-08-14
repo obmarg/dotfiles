@@ -19,7 +19,7 @@ if type -q starship
 end
 
 if type -q jj
-    status --is-interactive; and jj debug completion --fish | source
+    status --is-interactive; and jj util completion --fish | source
 end
 
 if type -q nvim
