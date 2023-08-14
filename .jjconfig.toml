@@ -5,8 +5,8 @@ email = "graeme@turbofish.tech"
 [ui]
 #diff-editor = ["ksdiff", "--merge", "$left", "$right"]
 #merge-editor = ["ksdiff", "--merge", "--output", "$output", "--base", "$base", "$left", "$right"]
-diff-editor = ["scm-diff-editor", "--dir-diff", "$left", "$right"]
-diff.format = "git"
+#diff-editor = ["scm-diff-editor", "--dir-diff", "$left", "$right"]
+#diff.format = "git"
 #pager = ["sh", "-c", "diff-so-fancy | less -RFX"]
 pager = "delta"
 
