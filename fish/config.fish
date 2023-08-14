@@ -42,7 +42,10 @@ if test -d ~/.brew/Cellar/asdf
     source (find ~/.brew/Cellar/asdf/*/asdf.fish)
 end
 
+# Death to husky
 set -x HUSKY 0
+set -x CARGO_HUSKY_DONT_INSTALL_HOOKS true
+
 
 alias ffs='pushd (git rev-parse --show-toplevel 2>/dev/null) && yarn && yarn build:packages && popd'
 
