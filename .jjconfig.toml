@@ -20,8 +20,7 @@ l = ['log', '--no-pager', '--reversed']
 'format_short_id(id)' = 'id.shortest(6)'
 
 [colors]
-# Don't highlight the shortest prefix
-"prefix" = "bright black"
+"prefix" = "cyan"
 "rest" = "bright black"
 
 # Also don't highlight divergent stuff (the red ?? is fine with me)
