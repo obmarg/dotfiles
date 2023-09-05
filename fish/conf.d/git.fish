@@ -22,21 +22,16 @@ function gdv
   git diff -w $argv | view -
 end
 
-if type -q git-branchless
-  alias gc='git record'
-  #compdef _git gc=git-record
-else
-  alias gc='git commit -v'
-  #compdef _git gc=git-commit
-  alias gc!='git commit -v --amend'
-  #compdef _git gc!=git-commit
-  alias gca='git commit -v -a'
-  #compdef _git gc=git-commit
-  alias gca!='git commit -v -a --amend'
-  #compdef _git gca!=git-commit
-  alias gcmsg='git commit -m'
-  #compdef _git gcmsg=git-commit
-end
+alias gc='git commit -v'
+#compdef _git gc=git-commit
+alias gc!='git commit -v --amend'
+#compdef _git gc!=git-commit
+alias gca='git commit -v -a'
+#compdef _git gc=git-commit
+alias gca!='git commit -v -a --amend'
+#compdef _git gca!=git-commit
+alias gcmsg='git commit -m'
+#compdef _git gcmsg=git-commit
   
 
 alias gco='git checkout'
