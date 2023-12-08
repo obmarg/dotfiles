@@ -2,22 +2,34 @@
 name = "Graeme Coupar"
 email = "graeme@turbofish.tech"
 
+[snapshot]
+#max-new-file-size = "10MiB"
+
+[git]
+push-branch-prefix = "obmarg/push-"
+
 [ui]
+#diff-editor = "meld-3"
 #diff-editor = ["ksdiff", "--merge", "$left", "$right"]
 #merge-editor = ["ksdiff", "--merge", "--output", "$output", "--base", "$base", "$left", "$right"]
-diff-editor = ["scm-diff-editor", "--dir-diff", "$left", "$right"]
+merge-editor = "vscode"
+#diff-editor = ["scm-diff-editor", "--dir-diff", "$left", "$right"]
 #diff.format = "git"
 #pager = ["sh", "-c", "diff-so-fancy | less -RFX"]
 #pager = "delta"
 
 [aliases]
 l = ['log', '--no-pager', '--reversed']
+s = ['status']
 
 [template-aliases]
 # Username part of the email address
 'format_short_signature(signature)' = 'signature.username()'
 'format_timestamp(timestamp)' = 'timestamp.ago()'
 'format_short_id(id)' = 'id.shortest(6)'
+
+[revset-aliases]
+"immutable_heads()" = "main@origin | (main@origin.. & ~mine())"
 
 [colors]
 "prefix" = "cyan"
