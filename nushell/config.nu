@@ -1,6 +1,6 @@
 # Nushell Config File
 #
-# version = "0.84.0"
+# version = "0.87.1"
 
 # For more information on defining custom themes, see
 # https://www.nushell.sh/book/coloring_and_theming.html
@@ -25,13 +25,13 @@ let dark_theme = {
     string: white
     nothing: white
     binary: white
-    cellpath: white
+    cell-path: white
     row_index: green_bold
     record: white
     list: white
     block: white
     hints: dark_gray
-    search_result: {bg: red fg: white}    
+    search_result: {bg: red fg: white}
     shape_and: purple_bold
     shape_binary: purple_bold
     shape_block: blue_bold
@@ -50,6 +50,7 @@ let dark_theme = {
     shape_globpattern: cyan_bold
     shape_int: purple_bold
     shape_internalcall: cyan_bold
+    shape_keyword: cyan_bold
     shape_list: cyan_bold
     shape_literal: blue
     shape_match_pattern: green
@@ -88,13 +89,13 @@ let light_theme = {
     string: dark_gray
     nothing: dark_gray
     binary: dark_gray
-    cellpath: dark_gray
+    cell-path: dark_gray
     row_index: green_bold
-    record: white
-    list: white
-    block: white
+    record: dark_gray
+    list: dark_gray
+    block: dark_gray
     hints: dark_gray
-    search_result: {fg: white bg: red}    
+    search_result: {fg: white bg: red}
     shape_and: purple_bold
     shape_binary: purple_bold
     shape_block: blue_bold
@@ -113,6 +114,7 @@ let light_theme = {
     shape_globpattern: cyan_bold
     shape_int: purple_bold
     shape_internalcall: cyan_bold
+    shape_keyword: cyan_bold
     shape_list: cyan_bold
     shape_literal: blue
     shape_match_pattern: green
@@ -150,10 +152,6 @@ $env.config = {
         always_trash: false # always act as if -t was given. Can be overridden with -p
     }
 
-    cd: {
-        abbreviations: false # allows `cd s/o/f` to expand to `cd some/other/folder`
-    }
-
     table: {
         mode: rounded # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
         index_mode: always # "always" show indexes, "never" show indexes, "auto" = show indexes when a table has "index" column
@@ -165,7 +163,10 @@ $env.config = {
             truncating_suffix: "..." # A suffix used by the 'truncating' methodology
         }
         header_on_separator: false # show header text on separator/border line
+        # abbreviated_row_count: 10 # limit data rows from top and bottom after reaching a set point
     }
+
+    error_style: "fancy" # "fancy" or "plain" for screen reader-friendly error messages
 
     # datetime_format determines what a datetime rendered in the shell would look like.
     # Behavior without this configuration point will be to "humanize" the datetime display,
@@ -176,9 +177,6 @@ $env.config = {
     }
 
     explore: {
-        try: {
-            border_color: {fg: "white"}
-        },
         status_bar_background: {fg: "#1D1F21", bg: "#C4C9C6"},
         command_bar_text: {fg: "#C4C9C6"},
         highlight: {fg: "black", bg: "yellow"},
@@ -189,18 +187,9 @@ $env.config = {
         },
         table: {
             split_line: {fg: "#404040"},
-            selected_cell: {},
+            selected_cell: {bg: light_blue},
             selected_row: {},
             selected_column: {},
-            show_cursor: true,
-            line_head_top: true,
-            line_head_bottom: true,
-            line_shift: true,
-            line_index: true,
-        },
-        config: {
-            border_color: {fg: "white"}
-            cursor_color: {fg: "black", bg: "light_yellow"}
         },
     }
 
@@ -224,14 +213,14 @@ $env.config = {
     }
 
     filesize: {
-        metric: true # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
+        metric: false # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
         format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, auto
     }
 
     cursor_shape: {
-        emacs: line # block, underscore, line, blink_block, blink_underscore, blink_line (line is the default)
-        vi_insert: block # block, underscore, line , blink_block, blink_underscore, blink_line (block is the default)
-        vi_normal: underscore # block, underscore, line, blink_block, blink_underscore, blink_line (underscore is the default)
+        emacs: line # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (line is the default)
+        vi_insert: block # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (block is the default)
+        vi_normal: underscore # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
     }
 
     color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
@@ -244,6 +233,7 @@ $env.config = {
     edit_mode: emacs # emacs, vi
     shell_integration: false # enables terminal shell integration. Off by default, as some terminals have issues with this.
     render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
+    use_kitty_protocol: false # enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this
 
     hooks: {
         pre_prompt: [{ null }] # run before the prompt is shown
@@ -318,6 +308,7 @@ $env.config = {
                 until: [
                     { send: menu name: completion_menu }
                     { send: menunext }
+                    { edit: complete }
                 ]
             }
         }
