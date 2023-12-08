@@ -9,3 +9,7 @@ disabled = true
 
 [git_status]
 disabled = true
+
+[nodejs]
+# This has been taking 500ms which is unacceptable
+disabled = true
