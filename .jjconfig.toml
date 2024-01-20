@@ -17,6 +17,7 @@ merge-editor = "vscode"
 #diff.format = "git"
 #pager = ["sh", "-c", "diff-so-fancy | less -RFX"]
 #pager = "delta"
+diff.tool = ["difft", "--color=always", "$left", "$right"]
 
 [aliases]
 l = ['log', '--no-pager', '--reversed']
