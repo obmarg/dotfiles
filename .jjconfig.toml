@@ -29,8 +29,16 @@ s = ['status']
 'format_timestamp(timestamp)' = 'timestamp.ago()'
 'format_short_id(id)' = 'id.shortest(6)'
 
+[revsets]
+# Changing this from the default `@ | ancestors(immutable_heads().., 2) | heads(immutable_heads())`
+# Default found here: https://github.com/martinvonz/jj/blob/2e64bf83fd9b8abf4c9880482ea4ce19492f3139/lib/src/settings.rs#L213
+# This is basically the default but hiding any non-local branches
+# Note: at some point might want to update this in line with https://github.com/martinvonz/jj/commit/62f0cb8c3f03ade34e8862ba0cd600603fc4a91a
+log = "@::trunk() | ((ancestors(immutable_heads().., 2) | heads(immutable_heads())) ~ (remote_branches() ~ branches()))"
+
 [revset-aliases]
-"immutable_heads()" = "main@origin | (main@origin.. & ~mine())"
+
+"immutable_heads()" = "trunk() | tags() | (trunk().. & ~mine())"
 
 [colors]
 "prefix" = "cyan"
