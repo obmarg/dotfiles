@@ -22,6 +22,7 @@ diff.tool = ["difft", "--color=always", "$left", "$right"]
 [aliases]
 l = ['log', '--no-pager', '--reversed']
 s = ['status']
+forcibly = ["--config-toml=revset-aliases.'immutable_heads()' = 'none()'"]
 
 [template-aliases]
 # Username part of the email address
@@ -37,7 +38,6 @@ s = ['status']
 log = "@::trunk() | ((ancestors(immutable_heads().., 2) | heads(immutable_heads())) ~ (remote_branches() ~ branches()) ~ tags())"
 
 [revset-aliases]
-
 "immutable_heads()" = "trunk() | tags() | (trunk().. & ~mine())"
 
 [colors]
