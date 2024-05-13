@@ -23,6 +23,18 @@
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
+      nix.settings.substituters = [
+	"https://cache.lix.systems"
+      ];
+
+      nix.settings.trusted-public-keys = [
+        "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
+      ];
+
+      nix.extraOptions = ''
+        extra-nix-path = nixpkgs=flake:nixpkgs
+      '';
+
       # Create /etc/zshrc that loads the nix-darwin environment.
       programs.zsh.enable = true;  # default shell on catalina
       programs.fish.enable = true;
