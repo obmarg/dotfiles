@@ -50,4 +50,10 @@
 
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
+
+      users.users.graeme = {
+        shell = pkgs.zsh;
+        description = "Graeme Coupar";
+        home = "/Users/graeme";
+      };
     }
