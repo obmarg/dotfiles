@@ -52,7 +52,7 @@
       nixpkgs.hostPlatform = "aarch64-darwin";
 
       users.users.graeme = {
-        shell = pkgs.zsh;
+        shell = pkgs.fish;
         description = "Graeme Coupar";
         home = "/Users/graeme";
       };
