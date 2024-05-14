@@ -13,7 +13,20 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
-        [ pkgs.vim
+        [
+          pkgs.curl
+          pkgs.difftastic
+          pkgs.direnv
+          pkgs.dust
+          pkgs.gh
+          pkgs.git
+          pkgs.jujutsu
+          pkgs.ripgrep
+          pkgs.wget
+          pkgs.atuin
+          pkgs.neovim
+          pkgs.starship
+          pkgs.tokei
         ];
 
       # Auto upgrade nix package and the daemon service.
