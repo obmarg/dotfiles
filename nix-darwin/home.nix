@@ -78,6 +78,11 @@
     # EDITOR = "emacs";
   };
 
+  programs.wezterm = {
+    enable = true;
+    extraConfig = builtins.readFile ../wezterm.lua;
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
