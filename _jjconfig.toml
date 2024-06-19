@@ -40,6 +40,9 @@ log = "@::trunk() | ((ancestors(immutable_heads().., 2) | heads(immutable_heads(
 [revset-aliases]
 "immutable_heads()" = "trunk() | tags() | (trunk().. & ~mine())"
 
+"common_ancestor(a,b)"="heads(::a & ::b)"
+"diverge(a,b)"="common_ancestor(a,b)::(a|b)"
+
 [colors]
 "prefix" = "cyan"
 "rest" = "bright black"
