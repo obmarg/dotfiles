@@ -16,6 +16,7 @@
           pkgs.neovim
           pkgs.starship
           pkgs.tokei
+          pkgs.nushell
         ];
 
       # Auto upgrade nix package and the daemon service.
