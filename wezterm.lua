@@ -16,5 +16,7 @@ config.font_size = 16
 config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 config.enable_scroll_bar = true
 
+config.send_composed_key_when_left_alt_is_pressed = true
+
 -- and finally, return the configuration to wezterm
 return config
