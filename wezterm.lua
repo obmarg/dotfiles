@@ -1,5 +1,10 @@
+
+local wezterm = require 'wezterm'
+
 -- This will hold the configuration.
 local config = wezterm.config_builder()
+
+local act = wezterm.action
 
 -- This is where you actually apply your config choices
 
@@ -15,6 +20,11 @@ config.font_size = 16
 
 config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 config.enable_scroll_bar = true
+
+config.keys = {
+  { key = 'LeftArrow', mods = 'SUPER', action = act.ActivateTabRelative(-1) },
+  { key = 'RightArrow', mods = 'SUPER', action = act.ActivateTabRelative(1) } 
+}
 
 config.send_composed_key_when_left_alt_is_pressed = true
 
