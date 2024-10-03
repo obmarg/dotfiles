@@ -6,7 +6,7 @@ email = "graeme@turbofish.tech"
 #max-new-file-size = "10MiB"
 
 [git]
-push-branch-prefix = "obmarg/"
+push-bookmark-prefix = "obmarg/"
 
 [ui]
 #diff-editor = "meld-3"
