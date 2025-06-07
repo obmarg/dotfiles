@@ -7,6 +7,7 @@
           pkgs.difftastic
           pkgs.direnv
           pkgs.dust
+          pkgs.flac
           pkgs.gh
           pkgs.git
           pkgs.jujutsu
